@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143 (not installed)</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -128,14 +128,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Desktop\Proj\De-bruijn Sequence Complexity\debruijn_sequences-main\debruijn_sequences-main\DebruijnSequences\CommandLineExecutor.cpp" />
-    <ClCompile Include="..\..\..\Desktop\Proj\De-bruijn Sequence Complexity\debruijn_sequences-main\debruijn_sequences-main\DebruijnSequences\DebruijnGraph.cpp" />
-    <ClCompile Include="..\..\..\Desktop\Proj\De-bruijn Sequence Complexity\debruijn_sequences-main\debruijn_sequences-main\DebruijnSequences\DebruijnSequenceGenerator.cpp" />
+    <ClCompile Include="CommandLineExecutor.cpp" />
     <ClCompile Include="complexityDistribution.cpp" />
+    <ClCompile Include="DebruijnGraph.cpp" />
+    <ClCompile Include="DebruijnSequenceGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Desktop\Proj\De-bruijn Sequence Complexity\debruijn_sequences-main\debruijn_sequences-main\DebruijnSequences\CommandLineExecutor.h" />
-    <ClInclude Include="..\..\..\Desktop\Proj\De-bruijn Sequence Complexity\debruijn_sequences-main\debruijn_sequences-main\DebruijnSequences\DebruijnGraph.h" />
+    <ClInclude Include="CommandLineExecutor.h" />
+    <ClInclude Include="DebruijnGraph.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
