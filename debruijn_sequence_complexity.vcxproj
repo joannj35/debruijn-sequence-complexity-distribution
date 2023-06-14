@@ -127,7 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="debruijn_sequence_complexity.cpp" />
+    <ClCompile Include="..\..\..\Desktop\Proj\De-bruijn Sequence Complexity\debruijn_sequences-main\debruijn_sequences-main\DebruijnSequences\CommandLineExecutor.cpp" />
+    <ClCompile Include="..\..\..\Desktop\Proj\De-bruijn Sequence Complexity\debruijn_sequences-main\debruijn_sequences-main\DebruijnSequences\DebruijnGraph.cpp" />
+    <ClCompile Include="..\..\..\Desktop\Proj\De-bruijn Sequence Complexity\debruijn_sequences-main\debruijn_sequences-main\DebruijnSequences\DebruijnSequenceGenerator.cpp" />
+    <ClCompile Include="complexityDistribution.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Desktop\Proj\De-bruijn Sequence Complexity\debruijn_sequences-main\debruijn_sequences-main\DebruijnSequences\CommandLineExecutor.h" />
+    <ClInclude Include="..\..\..\Desktop\Proj\De-bruijn Sequence Complexity\debruijn_sequences-main\debruijn_sequences-main\DebruijnSequences\DebruijnGraph.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

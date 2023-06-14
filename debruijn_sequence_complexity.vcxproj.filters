@@ -15,8 +15,25 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="debruijn_sequence_complexity.cpp">
+    <ClCompile Include="complexityDistribution.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Desktop\Proj\De-bruijn Sequence Complexity\debruijn_sequences-main\debruijn_sequences-main\DebruijnSequences\CommandLineExecutor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Desktop\Proj\De-bruijn Sequence Complexity\debruijn_sequences-main\debruijn_sequences-main\DebruijnSequences\DebruijnGraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Desktop\Proj\De-bruijn Sequence Complexity\debruijn_sequences-main\debruijn_sequences-main\DebruijnSequences\DebruijnSequenceGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Desktop\Proj\De-bruijn Sequence Complexity\debruijn_sequences-main\debruijn_sequences-main\DebruijnSequences\CommandLineExecutor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Desktop\Proj\De-bruijn Sequence Complexity\debruijn_sequences-main\debruijn_sequences-main\DebruijnSequences\DebruijnGraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
