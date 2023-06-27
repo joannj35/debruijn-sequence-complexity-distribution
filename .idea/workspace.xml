@@ -3,9 +3,9 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="CMakePresetLoader"><![CDATA[{
-  "useNewFormat": true
-}]]></component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
@@ -21,12 +21,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32dcbcdc-8ec7-4f14-801c-8cb5c8346f40" name="Changes" comment="Generator for binary seq of given size">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/debruijn_sequence_complexity.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.h" beforeDir="false" afterPath="$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Complexity 71/SequenceGenerator.h" beforeDir="false" afterPath="$PROJECT_DIR$/Complexity 71/SequenceGenerator.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Complexity 71/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Complexity 71/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-2ba1379f16bbe4647702.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-06-27T21-58-32-0436.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-debruijn_sequence_complexity-Debug-a7d1fdfa7385bbe0bdf5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/debruijn_sequence_complexity.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/debruijn_sequence_complexity.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,13 +77,14 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "preferences.lookFeel",
+    "structure.view.defaults.are.configured": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="debruijn_sequence_complexity" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="debruijn_sequence_complexity" TARGET_NAME="debruijn_sequence_complexity" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="debruijn_sequence_complexity" RUN_TARGET_NAME="debruijn_sequence_complexity">
@@ -94,6 +102,7 @@
       <option name="presentableId" value="Default" />
       <updated>1687891855981</updated>
       <workItem from="1687891856699" duration="6483000" />
+      <workItem from="1687903283396" duration="3337000" />
     </task>
     <task id="LOCAL-00001" summary="Generator for binary seq of given size">
       <created>1687895137806</created>
@@ -142,6 +151,11 @@
           <url>file://$PROJECT_DIR$/Complexity 71/SequenceGenerator.cpp</url>
           <line>28</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp</url>
+          <line>100</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

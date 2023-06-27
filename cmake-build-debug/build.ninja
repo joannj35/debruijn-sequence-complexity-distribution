@@ -51,14 +51,21 @@ build cmake_object_order_depends_target_debruijn_sequence_complexity: phony || C
 
 build CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/main.cpp.obj: CXX_COMPILER__debruijn_sequence_complexity_Debug C$:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/Complexity$ 71/main.cpp || cmake_object_order_depends_target_debruijn_sequence_complexity
   DEP_FILE = CMakeFiles\debruijn_sequence_complexity.dir\Complexity_71\main.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
   INCLUDES = -IC:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/. -I"C:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/Complexity 71"
   OBJECT_DIR = CMakeFiles\debruijn_sequence_complexity.dir
   OBJECT_FILE_DIR = CMakeFiles\debruijn_sequence_complexity.dir\Complexity_71
 
 build CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/SequenceGenerator.cpp.obj: CXX_COMPILER__debruijn_sequence_complexity_Debug C$:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/Complexity$ 71/SequenceGenerator.cpp || cmake_object_order_depends_target_debruijn_sequence_complexity
   DEP_FILE = CMakeFiles\debruijn_sequence_complexity.dir\Complexity_71\SequenceGenerator.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IC:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/. -I"C:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/Complexity 71"
+  OBJECT_DIR = CMakeFiles\debruijn_sequence_complexity.dir
+  OBJECT_FILE_DIR = CMakeFiles\debruijn_sequence_complexity.dir\Complexity_71
+
+build CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/ComplexityToDebruijn.cpp.obj: CXX_COMPILER__debruijn_sequence_complexity_Debug C$:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/Complexity$ 71/ComplexityToDebruijn.cpp || cmake_object_order_depends_target_debruijn_sequence_complexity
+  DEP_FILE = CMakeFiles\debruijn_sequence_complexity.dir\Complexity_71\ComplexityToDebruijn.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
   INCLUDES = -IC:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/. -I"C:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/Complexity 71"
   OBJECT_DIR = CMakeFiles\debruijn_sequence_complexity.dir
   OBJECT_FILE_DIR = CMakeFiles\debruijn_sequence_complexity.dir\Complexity_71
@@ -71,7 +78,7 @@ build CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/SequenceGenerato
 #############################################
 # Link the executable debruijn_sequence_complexity.exe
 
-build debruijn_sequence_complexity.exe: CXX_EXECUTABLE_LINKER__debruijn_sequence_complexity_Debug CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/main.cpp.obj CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/SequenceGenerator.cpp.obj
+build debruijn_sequence_complexity.exe: CXX_EXECUTABLE_LINKER__debruijn_sequence_complexity_Debug CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/main.cpp.obj CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/SequenceGenerator.cpp.obj CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/ComplexityToDebruijn.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\debruijn_sequence_complexity.dir

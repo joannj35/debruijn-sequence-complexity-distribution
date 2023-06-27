@@ -1,5 +1,16 @@
 # ninja log v5
-3	665	7096063123352051	build.ninja	9c2b19bffe01be20
-3	663	7096032044212555	CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/SequenceGenerator.cpp.obj	435d86a96f9b3a16
-16	990	7096036886607027	CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/main.cpp.obj	1f8445a15373ee9b
-991	1160	7096036888273915	debruijn_sequence_complexity.exe	6a5d4ec8db930170
+3	665	7096095555888273	build.ninja	9c2b19bffe01be20
+6	1416	7096075778884659	CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/SequenceGenerator.cpp.obj	435d86a96f9b3a16
+5	756	7096094555196453	CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/main.cpp.obj	1f8445a15373ee9b
+977	1120	7096076737062227	debruijn_sequence_complexity.exe	ac263e9ff6ae12f3
+8	925	7096076053210221	CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/ComplexityToDebruijn.cpp.obj	d24de723c2d6006c
+19	2765	7096095606212361	CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/main.cpp.obj	564a6744c1554356
+7	3047	7096095608990177	CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/SequenceGenerator.cpp.obj	ec808115aa7fdb39
+7	2515	7096095885689765	CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/ComplexityToDebruijn.cpp.obj	c20ff3bd35e122b7
+2517	2857	7096095889178879	debruijn_sequence_complexity.exe	ac263e9ff6ae12f3
+3	1447	7096097939438028	CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/ComplexityToDebruijn.cpp.obj	c20ff3bd35e122b7
+1448	1695	7096097941891403	debruijn_sequence_complexity.exe	ac263e9ff6ae12f3
+4	1142	7096098330306444	CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/main.cpp.obj	564a6744c1554356
+1143	1333	7096098332150932	debruijn_sequence_complexity.exe	ac263e9ff6ae12f3
+3	1174	7096098416516428	CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/main.cpp.obj	564a6744c1554356
+1175	1393	7096098418660629	debruijn_sequence_complexity.exe	ac263e9ff6ae12f3

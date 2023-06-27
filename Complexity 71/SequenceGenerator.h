@@ -20,7 +20,7 @@ class SequenceGenerator {
 public:
     int getNumOfSeq() const;
 
-    SequenceGenerator(int seqLen, int complexity, const vector<char> &alphabet = {'0', '1'}) : seq_len(seqLen),
+    explicit SequenceGenerator(int complexity, const vector<char> &alphabet = {'0', '1'}) : seq_len(pow(2,ceil(log2(complexity)))),
                                                                                   complexity(complexity),
                                                                                   alphabet(alphabet), num_of_seq(0) {
         this->generateSequences();
