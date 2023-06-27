@@ -56,14 +56,19 @@ static int checkComplexity(const std::string& S, int m) {
 void SequenceGenerator::generateSequences() {
     vector<string> sequences_perm = permutations(this->alphabet,this->seq_len);
     for (const auto& seq: sequences_perm) {
-        if (checkComplexity(seq, 3) == this->complexity - 1){
+        if (checkComplexity(seq, log2(this->seq_len)) == this->complexity - 1){
             this->sequences.push_back(seq);
+            this->num_of_seq++;
         }
     }
 }
 
 const vector<string> &SequenceGenerator::getSequences() const {
     return sequences;
+}
+
+int SequenceGenerator::getNumOfSeq() const {
+    return num_of_seq;
 }
 
 

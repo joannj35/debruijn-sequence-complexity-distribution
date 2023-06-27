@@ -18,6 +18,8 @@ class SequenceGenerator {
     vector<char> alphabet;
     void generateSequences();
 public:
+    int getNumOfSeq() const;
+
     SequenceGenerator(int seqLen, int complexity, const vector<char> &alphabet = {'0', '1'}) : seq_len(seqLen),
                                                                                   complexity(complexity),
                                                                                   alphabet(alphabet), num_of_seq(0) {
