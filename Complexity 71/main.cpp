@@ -8,11 +8,11 @@ using namespace std;
 
 int main(){
     ComplexityToDebruijn C(7, 7);
-    C.fromSubseqToDebruijn("00000011");
-//    SequenceGenerator seq(7);
-//    auto s = seq.getSequences();
-//    for (const auto& i : s) {
-//        cout << i << endl;
-//    }
-//    cout << seq.getNumOfSeq() << endl;
+    C.fromSubseqToDebruijn("11100111");
+    SequenceGenerator seq(7);
+    auto s = seq.getSequences();
+    for (const auto& i : s) {
+        cout << i << endl;
+    }
+    cout << seq.getNumOfSeq() << endl;
 }
