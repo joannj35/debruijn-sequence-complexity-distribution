@@ -20,19 +20,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32dcbcdc-8ec7-4f14-801c-8cb5c8346f40" name="Changes" comment="Generator for binary seq of given size">
+    <list default="true" id="32dcbcdc-8ec7-4f14-801c-8cb5c8346f40" name="Changes" comment="sub sequences to Debruijn seq">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.h" beforeDir="false" afterPath="$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Complexity 71/SequenceGenerator.h" beforeDir="false" afterPath="$PROJECT_DIR$/Complexity 71/SequenceGenerator.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Complexity 71/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Complexity 71/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-2ba1379f16bbe4647702.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-06-27T21-58-32-0436.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-debruijn_sequence_complexity-Debug-a7d1fdfa7385bbe0bdf5.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/debruijn_sequence_complexity.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/debruijn_sequence_complexity.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,8 +60,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
@@ -102,7 +98,7 @@
       <option name="presentableId" value="Default" />
       <updated>1687891855981</updated>
       <workItem from="1687891856699" duration="6483000" />
-      <workItem from="1687903283396" duration="3337000" />
+      <workItem from="1687903283396" duration="10190000" />
     </task>
     <task id="LOCAL-00001" summary="Generator for binary seq of given size">
       <created>1687895137806</created>
@@ -111,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687895137806</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="sub sequences to Debruijn seq">
+      <created>1687906703790</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1687906703790</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,7 +140,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Generator for binary seq of given size" />
-    <option name="LAST_COMMIT_MESSAGE" value="Generator for binary seq of given size" />
+    <MESSAGE value="sub sequences to Debruijn seq" />
+    <option name="LAST_COMMIT_MESSAGE" value="sub sequences to Debruijn seq" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -154,8 +158,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp</url>
-          <line>100</line>
+          <line>171</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp</url>
+          <line>182</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp</url>
+          <line>129</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
