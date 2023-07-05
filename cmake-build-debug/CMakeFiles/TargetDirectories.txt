@@ -1,3 +1,3 @@
-C:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/cmake-build-debug/CMakeFiles/debruijn_sequence_complexity.dir
-C:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Razan/CLionProjects/debruijn_sequence_complexity/cmake-build-debug/CMakeFiles/debruijn_sequence_complexity.dir
+C:/Users/Razan/CLionProjects/debruijn_sequence_complexity/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Razan/CLionProjects/debruijn_sequence_complexity/cmake-build-debug/CMakeFiles/rebuild_cache.dir

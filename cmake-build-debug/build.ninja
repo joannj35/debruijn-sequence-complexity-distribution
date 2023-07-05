@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/Razan/CLionProjects/debruijn_sequence_complexity/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target debruijn_sequence_complexity
 
@@ -49,24 +49,31 @@ cmake_ninja_workdir = C$:/Users/Razan/Documents/GitHub/debruijn_sequence_complex
 
 build cmake_object_order_depends_target_debruijn_sequence_complexity: phony || CMakeFiles/debruijn_sequence_complexity.dir
 
-build CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/main.cpp.obj: CXX_COMPILER__debruijn_sequence_complexity_Debug C$:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/Complexity$ 71/main.cpp || cmake_object_order_depends_target_debruijn_sequence_complexity
+build CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/main.cpp.obj: CXX_COMPILER__debruijn_sequence_complexity_Debug C$:/Users/Razan/CLionProjects/debruijn_sequence_complexity/Complexity$ 71/main.cpp || cmake_object_order_depends_target_debruijn_sequence_complexity
   DEP_FILE = CMakeFiles\debruijn_sequence_complexity.dir\Complexity_71\main.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++20
-  INCLUDES = -IC:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/. -I"C:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/Complexity 71"
+  INCLUDES = -IC:/Users/Razan/CLionProjects/debruijn_sequence_complexity/. -I"C:/Users/Razan/CLionProjects/debruijn_sequence_complexity/Complexity 71"
   OBJECT_DIR = CMakeFiles\debruijn_sequence_complexity.dir
   OBJECT_FILE_DIR = CMakeFiles\debruijn_sequence_complexity.dir\Complexity_71
 
-build CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/SequenceGenerator.cpp.obj: CXX_COMPILER__debruijn_sequence_complexity_Debug C$:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/Complexity$ 71/SequenceGenerator.cpp || cmake_object_order_depends_target_debruijn_sequence_complexity
+build CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/SequenceGenerator.cpp.obj: CXX_COMPILER__debruijn_sequence_complexity_Debug C$:/Users/Razan/CLionProjects/debruijn_sequence_complexity/Complexity$ 71/SequenceGenerator.cpp || cmake_object_order_depends_target_debruijn_sequence_complexity
   DEP_FILE = CMakeFiles\debruijn_sequence_complexity.dir\Complexity_71\SequenceGenerator.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++20
-  INCLUDES = -IC:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/. -I"C:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/Complexity 71"
+  INCLUDES = -IC:/Users/Razan/CLionProjects/debruijn_sequence_complexity/. -I"C:/Users/Razan/CLionProjects/debruijn_sequence_complexity/Complexity 71"
   OBJECT_DIR = CMakeFiles\debruijn_sequence_complexity.dir
   OBJECT_FILE_DIR = CMakeFiles\debruijn_sequence_complexity.dir\Complexity_71
 
-build CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/ComplexityToDebruijn.cpp.obj: CXX_COMPILER__debruijn_sequence_complexity_Debug C$:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/Complexity$ 71/ComplexityToDebruijn.cpp || cmake_object_order_depends_target_debruijn_sequence_complexity
+build CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/ComplexityToDebruijn.cpp.obj: CXX_COMPILER__debruijn_sequence_complexity_Debug C$:/Users/Razan/CLionProjects/debruijn_sequence_complexity/Complexity$ 71/ComplexityToDebruijn.cpp || cmake_object_order_depends_target_debruijn_sequence_complexity
   DEP_FILE = CMakeFiles\debruijn_sequence_complexity.dir\Complexity_71\ComplexityToDebruijn.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++20
-  INCLUDES = -IC:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/. -I"C:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/Complexity 71"
+  INCLUDES = -IC:/Users/Razan/CLionProjects/debruijn_sequence_complexity/. -I"C:/Users/Razan/CLionProjects/debruijn_sequence_complexity/Complexity 71"
+  OBJECT_DIR = CMakeFiles\debruijn_sequence_complexity.dir
+  OBJECT_FILE_DIR = CMakeFiles\debruijn_sequence_complexity.dir\Complexity_71
+
+build CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/PairCombinations.cpp.obj: CXX_COMPILER__debruijn_sequence_complexity_Debug C$:/Users/Razan/CLionProjects/debruijn_sequence_complexity/Complexity$ 71/PairCombinations.cpp || cmake_object_order_depends_target_debruijn_sequence_complexity
+  DEP_FILE = CMakeFiles\debruijn_sequence_complexity.dir\Complexity_71\PairCombinations.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always -std=gnu++20
+  INCLUDES = -IC:/Users/Razan/CLionProjects/debruijn_sequence_complexity/. -I"C:/Users/Razan/CLionProjects/debruijn_sequence_complexity/Complexity 71"
   OBJECT_DIR = CMakeFiles\debruijn_sequence_complexity.dir
   OBJECT_FILE_DIR = CMakeFiles\debruijn_sequence_complexity.dir\Complexity_71
 
@@ -78,7 +85,7 @@ build CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/ComplexityToDebr
 #############################################
 # Link the executable debruijn_sequence_complexity.exe
 
-build debruijn_sequence_complexity.exe: CXX_EXECUTABLE_LINKER__debruijn_sequence_complexity_Debug CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/main.cpp.obj CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/SequenceGenerator.cpp.obj CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/ComplexityToDebruijn.cpp.obj
+build debruijn_sequence_complexity.exe: CXX_EXECUTABLE_LINKER__debruijn_sequence_complexity_Debug CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/main.cpp.obj CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/SequenceGenerator.cpp.obj CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/ComplexityToDebruijn.cpp.obj CMakeFiles/debruijn_sequence_complexity.dir/Complexity_71/PairCombinations.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\debruijn_sequence_complexity.dir
@@ -93,7 +100,7 @@ build debruijn_sequence_complexity.exe: CXX_EXECUTABLE_LINKER__debruijn_sequence
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Razan\Documents\GitHub\debruijn_sequence_complexity\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D C:\Users\Razan\CLionProjects\debruijn_sequence_complexity\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -104,7 +111,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\Razan\Documents\GitHub\debruijn_sequence_complexity\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\Razan\Documents\GitHub\debruijn_sequence_complexity -BC:\Users\Razan\Documents\GitHub\debruijn_sequence_complexity\cmake-build-debug"
+  COMMAND = cmd.exe /C "cd /D C:\Users\Razan\CLionProjects\debruijn_sequence_complexity\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SC:\Users\Razan\CLionProjects\debruijn_sequence_complexity -BC:\Users\Razan\CLionProjects\debruijn_sequence_complexity\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -122,7 +129,7 @@ build debruijn_sequence_complexity: phony debruijn_sequence_complexity.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/cmake-build-debug
+# Folder: C:/Users/Razan/CLionProjects/debruijn_sequence_complexity/cmake-build-debug
 
 build all: phony debruijn_sequence_complexity.exe
 
@@ -133,14 +140,14 @@ build all: phony debruijn_sequence_complexity.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake C$:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/CMakeLists.txt CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake C$:/Users/Razan/CLionProjects/debruijn_sequence_complexity/CMakeLists.txt CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake C$:/Users/Razan/Documents/GitHub/debruijn_sequence_complexity/CMakeLists.txt CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake: phony
+build C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeRCInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Compiler/GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/Windows.cmake C$:/Program$ Files/JetBrains/CLion$ 2021.3.2/bin/cmake/win/x64/share/cmake-3.25/Modules/Platform/WindowsPaths.cmake C$:/Users/Razan/CLionProjects/debruijn_sequence_complexity/CMakeLists.txt CMakeCache.txt CMakeFiles/3.25.2/CMakeCCompiler.cmake CMakeFiles/3.25.2/CMakeCXXCompiler.cmake CMakeFiles/3.25.2/CMakeRCCompiler.cmake CMakeFiles/3.25.2/CMakeSystem.cmake: phony
 
 
 #############################################

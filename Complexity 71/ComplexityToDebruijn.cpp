@@ -222,6 +222,9 @@ ll ComplexityToDebruijn::fromSubseqToDebruijn(string seq) {
         int i_s2 = bin_to_dec[s.second.substr(1, 7)];
         return i_f1 != i_f2 && i_s1 != i_s2 && i_f1 != i_s2 && i_s1 != i_f2 && i_s2 != i_f2 && i_s1 != i_f1;
     });
+    for(auto p : filtered_options){
+        cout << "(" << p.first << ") (" << p.second << ")" << endl;
+    }
     vector<string> all_sequences;
     auto pair_comb = choosePairs(filtered_options, bin_to_dec, all_sequences);
 
