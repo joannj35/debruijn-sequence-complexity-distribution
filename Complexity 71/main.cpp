@@ -7,12 +7,13 @@ using namespace std;
 
 
 int main(){
-    ComplexityToDebruijn C(7, 7);
-    C.fromSubseqToDebruijn("0000001100000011000000110000001100000011000000110000001100000011");
-    SequenceGenerator seq(7);
+    ComplexityToDebruijn C(6, 6);
+//
+    SequenceGenerator seq(6);
     auto s = seq.getSequences();
     for (const auto& i : s) {
-        cout << i << endl;
+        cout << i << " : ";
+        cout << C.fromSubseqToDebruijn(i+i+i+i) << endl;
     }
     cout << seq.getNumOfSeq() << endl;
 }

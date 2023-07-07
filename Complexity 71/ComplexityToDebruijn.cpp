@@ -1,17 +1,18 @@
 #include "ComplexityToDebruijn.h"
 #include "set"
 int n;
+map<string, int> bin_to_dec1;
 
 ComplexityToDebruijn::ComplexityToDebruijn(int complexity, int order) : complexity(complexity), order(order), total_seq_num(0) {}
 
 map<string, int> generateStringMap() {
     map<string, int> stringMap;
 
-    for (int i = 0; i < 128; i++) {
+    for (int i = 0; i < pow(2,n); i++) {
         string binaryString = "";
         int value = i;
 
-        for (int j = 0; j < 7; j++) {
+        for (int j = 0; j < n; j++) {
             binaryString = (char)('0' + (value % 2)) + binaryString;
             value /= 2;
         }
@@ -62,53 +63,117 @@ static bool validate(string seq){
 }
 
 void ComplexityToDebruijn::compute() {
-    SequenceGenerator sub_sequences(7);
+    SequenceGenerator sub_sequences(this->complexity);
     auto sub_seq = sub_sequences.getSequences();
     for (auto seq : sub_seq) {
         this->subseq_to_debruijn.insert({seq, fromSubseqToDebruijn(seq)});
     }
 }
-
-static void generateXORStrings(const string& s, string& a, string& b, int index, vector<pair<string,string>>& options) {
+static void generateXORStrings(const string& s, string& a, string& b, int index, vector<pair<string,string>>& options, vector<bool> check) {
+//static void generateXORStrings(const string& s, string& a, string& b, int index, ll& options, vector<bool> check) {
     if (index == s.size()) {
+        auto a_b = a+b;
+        auto b_a = b+a; //b concat a
+        for (int i = n - 1; i > 0; i--) {
+            auto a_sub = bin_to_dec1[a_b.substr(a.size() - i, n)];
+            auto b_sub = bin_to_dec1[b_a.substr(a.size() - i, n)];
+            if (!check[a_sub] && !check[b_sub] && a_sub != b_sub) {
+                check[a_sub] = true;
+                check[b_sub] = true;
+            }
+            else return;
+        }
         if (find(options.begin(), options.end(), make_pair(b, a)) == options.end()) {
             options.emplace_back(a, b);
         }
+//        cout << a+b << endl;
+//        if (validate(a+b)) options++;
         return;
     }
 
     if (s[index] == '0') {
         a += '0';
         b += '0';
-        generateXORStrings(s, a, b, index + 1, options);
+        if(a.size() >= n){
+            auto a_sub = bin_to_dec1[a.substr(a.size() - n, n)];
+            auto b_sub = bin_to_dec1[b.substr(b.size() - n, n)];
+            if (!check[a_sub] && !check[b_sub] && a_sub!=b_sub){
+                check[a_sub] = true;
+                check[b_sub] = true;
+                generateXORStrings(s, a, b, index + 1, options, check);
+                check[a_sub] = false;
+                check[b_sub] = false;
+            }
+        } else {
+            generateXORStrings(s, a, b, index + 1, options, check);
+        }
         a.pop_back();
         b.pop_back();
 
         a += '1';
         b += '1';
-        generateXORStrings(s, a, b, index + 1, options);
+        if(a.size() >= n){
+            auto a_sub = bin_to_dec1[a.substr(a.size() - n, n)];
+            auto b_sub = bin_to_dec1[b.substr(b.size() - n, n)];
+            if (!check[a_sub] && !check[b_sub] && a_sub != b_sub){
+                check[a_sub] = true;
+                check[b_sub] = true;
+                generateXORStrings(s, a, b, index + 1, options, check);
+                check[a_sub] = false;
+                check[b_sub] = false;
+            }
+        } else {
+            generateXORStrings(s, a, b, index + 1, options, check);
+        }
         a.pop_back();
         b.pop_back();
 
     } else if (s[index] == '1') {
         a += '1';
         b += '0';
-        generateXORStrings(s, a, b, index + 1, options);
+        if(a.size() >= n){
+            auto a_sub = bin_to_dec1[a.substr(a.size() - n, n)];
+            auto b_sub = bin_to_dec1[b.substr(b.size() - n, n)];
+            if (!check[a_sub] && !check[b_sub] && a_sub != b_sub){
+                check[a_sub] = true;
+                check[b_sub] = true;
+                generateXORStrings(s, a, b, index + 1, options, check);
+                check[a_sub] = false;
+                check[b_sub] = false;
+            }
+        } else {
+            generateXORStrings(s, a, b, index + 1, options, check);
+        }
         a.pop_back();
         b.pop_back();
 
         a += '0';
         b += '1';
-        generateXORStrings(s, a, b, index + 1, options);
+        if(a.size() >= n){
+            auto a_sub = bin_to_dec1[a.substr(a.size() - n, n)];
+            auto b_sub = bin_to_dec1[b.substr(b.size() - n, n)];
+            if (!check[a_sub] && !check[b_sub] && a_sub != b_sub){
+                check[a_sub] = true;
+                check[b_sub] = true;
+                generateXORStrings(s, a, b, index + 1, options, check);
+                check[a_sub] = false;
+                check[b_sub] = false;
+            }
+        } else {
+            generateXORStrings(s, a, b, index + 1, options, check);
+        }
         a.pop_back();
         b.pop_back();
     }
 }
 
 static vector<pair<string,string>>  getAllXORStrings(const string& s) {
+//static ll  getAllXORStrings(const string& s) {
     vector<pair<string,string>> options;
+//    ll options = 0;
     string a, b;
-    generateXORStrings(s, a, b, 0, options);
+    vector<bool> check(pow(2,n), false);
+    generateXORStrings(s, a, b, 0, options, check);
     return options;
 }
 bool comparePairs(const pair<string, string>& a, const pair<string, string>& b) {
@@ -117,19 +182,19 @@ bool comparePairs(const pair<string, string>& a, const pair<string, string>& b) 
 
 static vector<string> generateStrings(const vector<pair<string, string>>& input,map<string, int> bin_to_dec, vector<string>& result) {
     string prefix;
-    int inputSize = 8;
+    int inputSize = 4;
 
     // Sort the input vector based on the first element of each pair
     vector<pair<string, string>> sortedInput = input;
     sort(sortedInput.begin(), sortedInput.end(), comparePairs);
         // Generate all possible combinations of first 64 chars
         do {
-            vector<bool> check(128, false);
+            vector<bool> check(pow(2,n), false);
             bool debruijn = true;
             prefix.clear();
             for (int i = 0; i < inputSize; i++) {
-                int index = bin_to_dec[sortedInput[i].first.substr(0, 7)];
-                int index2 = bin_to_dec[sortedInput[i].first.substr(1, 7)];
+                int index = bin_to_dec[sortedInput[i].first.substr(0, n)];
+                int index2 = bin_to_dec[sortedInput[i].first.substr(1, n)];
                 if(!check[index] && !check[index2] && index != index2){
                     check[index] = true;
                     check[index2] = true;
@@ -146,8 +211,8 @@ static vector<string> generateStrings(const vector<pair<string, string>>& input,
             // Generate the corresponding string of the next 64 chars
             string suffix;
             for (int i = 0; i < inputSize; i++) {
-                int index = bin_to_dec[sortedInput[i].second.substr(0, 7)];
-                int index2 = bin_to_dec[sortedInput[i].second.substr(1, 7)];
+                int index = bin_to_dec[sortedInput[i].second.substr(0, n)];
+                int index2 = bin_to_dec[sortedInput[i].second.substr(1, n)];
                 if(!check[index] && !check[index2] && index != index2){
                     check[index] = true;
                     check[index2] = true;
@@ -209,29 +274,41 @@ vector<vector<pair<string, string>>> choosePairs(const vector<pair<string, strin
 
 ll ComplexityToDebruijn::fromSubseqToDebruijn(string seq) {
     ll count = 0;
-    vector<pair<string,string>> options = getAllXORStrings(seq);
-    vector<string> filtered_de_bruijn;
-    vector<pair<string,string>> filtered_options;
     n = this->order;
-    map<string, int> bin_to_dec = generateStringMap();
-    copy_if(options.begin(), options.end(), back_inserter(filtered_options), [](const pair<string,string>& s) {
-        map<string, int> bin_to_dec = generateStringMap();
-        int i_f1 = bin_to_dec[s.first.substr(0, 7)];
-        int i_f2 = bin_to_dec[s.first.substr(1, 7)];
-        int i_s1 = bin_to_dec[s.second.substr(0, 7)];
-        int i_s2 = bin_to_dec[s.second.substr(1, 7)];
-        return i_f1 != i_f2 && i_s1 != i_s2 && i_f1 != i_s2 && i_s1 != i_f2 && i_s2 != i_f2 && i_s1 != i_f1;
-    });
-    for(auto p : filtered_options){
-        cout << "(" << p.first << ") (" << p.second << ")" << endl;
+    bin_to_dec1 = generateStringMap();
+//    ll options = getAllXORStrings(seq);
+//    cout << options << endl;
+    vector<pair<string,string>> options = getAllXORStrings(seq);
+    for(auto p : options){
+        cout << "(" << p.first << ")" << endl;
     }
-    vector<string> all_sequences;
-    auto pair_comb = choosePairs(filtered_options, bin_to_dec, all_sequences);
+    cout << "SECONDS" << endl;
+    for(auto p : options){
+        cout << "(" << p.second << ")" << endl;
+    }
 
-    copy_if(all_sequences.begin(), all_sequences.end(), back_inserter(filtered_de_bruijn), [](const string& s) {
-        return validate(s);
-    });
-//    set<string> used;
-//    generateDebruijn(options, 0, used, check, pow(2, this->order - 1), "", "");
-    return filtered_de_bruijn.size();
+//    vector<string> filtered_de_bruijn;
+//    vector<pair<string,string>> filtered_options;
+//    n = this->order;
+//    map<string, int> bin_to_dec = generateStringMap();
+//    copy_if(options.begin(), options.end(), back_inserter(filtered_options), [](const pair<string,string>& s) {
+//        map<string, int> bin_to_dec = generateStringMap();
+//        int i_f1 = bin_to_dec[s.first.substr(0, n)];
+//        int i_f2 = bin_to_dec[s.first.substr(1, n)];
+//        int i_s1 = bin_to_dec[s.second.substr(0, n)];
+//        int i_s2 = bin_to_dec[s.second.substr(1, n)];
+//        return i_f1 != i_f2 && i_s1 != i_s2 && i_f1 != i_s2 && i_s1 != i_f2 && i_s2 != i_f2 && i_s1 != i_f1;
+//    });
+//    for(auto p : filtered_options){
+//        cout << "(" << p.first << ") (" << p.second << ")" << endl;
+//    }
+//    vector<string> all_sequences;
+//    auto pair_comb = choosePairs(filtered_options, bin_to_dec, all_sequences);
+//
+//    copy_if(all_sequences.begin(), all_sequences.end(), back_inserter(filtered_de_bruijn), [](const string& s) {
+//        return validate(s);
+//    });
+////    set<string> used;
+////    generateDebruijn(options, 0, used, check, pow(2, this->order - 1), "", "");
+    return options.size();
 }
