@@ -23,8 +23,12 @@
     <list default="true" id="32dcbcdc-8ec7-4f14-801c-8cb5c8346f40" name="Changes" comment="sub sequences to Debruijn seq">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Complexity 71/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Complexity 71/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-2120af67d5621e174487.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-468232982cd1ee9774be.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-c6b262b552a66ee61d28.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-b3a791685a54ccf675cf.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-07-05T01-56-40-0768.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-debruijn_sequence_complexity-Debug-3f2aa433ff23663846b2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-e2acddffd428c48bb2d1.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
@@ -83,7 +87,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Razan/CLionProjects/testing&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Razan/CLionProjects/debruijn-validator/main.cpp&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -94,11 +98,6 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="debruijn_sequence_complexity" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="debruijn_sequence_complexity" TARGET_NAME="debruijn_sequence_complexity" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="debruijn_sequence_complexity" RUN_TARGET_NAME="debruijn_sequence_complexity">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -119,6 +118,9 @@
       <workItem from="1687954932638" duration="1032000" />
       <workItem from="1688522042779" duration="3484000" />
       <workItem from="1688549072205" duration="13291000" />
+      <workItem from="1688809971364" duration="2242000" />
+      <workItem from="1688816959022" duration="5449000" />
+      <workItem from="1688825207846" duration="44000" />
     </task>
     <task id="LOCAL-00001" summary="Generator for binary seq of given size">
       <created>1687895137806</created>
@@ -168,23 +170,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp</url>
-          <line>273</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp</url>
-          <line>296</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp</url>
           <line>237</line>
           <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp</url>
-          <line>183</line>
-          <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Complexity 71/main.cpp</url>
@@ -198,20 +185,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp</url>
-          <line>280</line>
-          <option name="timeStamp" value="22" />
+          <line>277</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp</url>
-          <line>191</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp</url>
-          <line>73</line>
-          <option name="timeStamp" value="24" />
+          <line>176</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="bin_to_dec1" language="ObjectiveC" />
+        <watch expression="n" language="ObjectiveC" />
+        <watch expression="a.size()" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

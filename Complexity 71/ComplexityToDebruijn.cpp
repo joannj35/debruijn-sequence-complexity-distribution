@@ -62,6 +62,24 @@ static bool validate(string seq){
     return ranges::all_of(sub_seq, [](bool i) { return i; });
 }
 
+static bool IsRotation(const std::string& s1, std::string s2)
+{
+    if (s1.size() != s2.size())
+        return false;
+
+    if (s1 == s2)
+        return true;
+
+    for (size_t i = 0; i < s2.size(); i++)
+    {
+        std::rotate(s2.begin(), s2.begin() + 1, s2.end());
+        if (s1 == s2)
+            return true;
+    }
+
+    return false;
+}
+
 void ComplexityToDebruijn::compute() {
     SequenceGenerator sub_sequences(this->complexity);
     auto sub_seq = sub_sequences.getSequences();
@@ -84,6 +102,11 @@ static void generateXORStrings(const string& s, string& a, string& b, int index,
             else return;
         }
         if (find(options.begin(), options.end(), make_pair(b, a)) == options.end()) {
+            for (auto aux: options){
+                if (IsRotation(a_b, aux.first+aux.second)){
+                    return;
+                }
+            }
             options.emplace_back(a, b);
         }
 //        cout << a+b << endl;
@@ -169,9 +192,9 @@ static void generateXORStrings(const string& s, string& a, string& b, int index,
 
 static vector<pair<string,string>>  getAllXORStrings(const string& s) {
 //static ll  getAllXORStrings(const string& s) {
-    vector<pair<string,string>> options;
+    vector<pair<string,string>> options, filtered_options;
 //    ll options = 0;
-    string a, b;
+    string a = "", b = "";
     vector<bool> check(pow(2,n), false);
     generateXORStrings(s, a, b, 0, options, check);
     return options;
@@ -179,6 +202,8 @@ static vector<pair<string,string>>  getAllXORStrings(const string& s) {
 bool comparePairs(const pair<string, string>& a, const pair<string, string>& b) {
     return a.first < b.first;
 }
+
+
 
 static vector<string> generateStrings(const vector<pair<string, string>>& input,map<string, int> bin_to_dec, vector<string>& result) {
     string prefix;
@@ -279,13 +304,10 @@ ll ComplexityToDebruijn::fromSubseqToDebruijn(string seq) {
 //    ll options = getAllXORStrings(seq);
 //    cout << options << endl;
     vector<pair<string,string>> options = getAllXORStrings(seq);
-    for(auto p : options){
-        cout << "(" << p.first << ")" << endl;
-    }
-    cout << "SECONDS" << endl;
-    for(auto p : options){
-        cout << "(" << p.second << ")" << endl;
-    }
+//    for(auto p : options){
+//        cout << "(" << p.first << ")" ;
+//        cout << "(" << p.second << ")" << endl;
+//    }
 
 //    vector<string> filtered_de_bruijn;
 //    vector<pair<string,string>> filtered_options;
