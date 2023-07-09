@@ -20,6 +20,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="32dcbcdc-8ec7-4f14-801c-8cb5c8346f40" name="Changes" comment="sub sequences to Debruijn seq">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Complexity 71/ComplexityToDebruijn.cpp" afterDir="false" />
@@ -48,6 +49,9 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/debruijn_sequence_complexity.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/debruijn_sequence_complexity.exe" afterDir="false" />
     </list>
+=======
+    <list default="true" id="32dcbcdc-8ec7-4f14-801c-8cb5c8346f40" name="Changes" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,10 +121,14 @@
       <workItem from="1687945360811" duration="5896000" />
       <workItem from="1687954932638" duration="1032000" />
       <workItem from="1688522042779" duration="3484000" />
+<<<<<<< Updated upstream
       <workItem from="1688549072205" duration="13291000" />
       <workItem from="1688809971364" duration="2242000" />
       <workItem from="1688816959022" duration="5449000" />
       <workItem from="1688825207846" duration="44000" />
+=======
+      <workItem from="1688549072205" duration="13463000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="Generator for binary seq of given size">
       <created>1687895137806</created>
@@ -136,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1687906703790</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="who noz">
+      <option name="closed" value="true" />
+      <created>1688743322502</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1688743322502</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,7 +179,11 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Generator for binary seq of given size" />
     <MESSAGE value="sub sequences to Debruijn seq" />
-    <option name="LAST_COMMIT_MESSAGE" value="sub sequences to Debruijn seq" />
+    <MESSAGE value="who noz" />
+    <option name="LAST_COMMIT_MESSAGE" value="who noz" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
