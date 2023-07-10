@@ -111,9 +111,9 @@ void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string
                     return;
                 }
             }
+            cout << a+b << endl;
             options.emplace_back(a, b);
         }
-        cout << a+b << endl;
 //        if (validate(a+b)) options++;
         return;
     }
