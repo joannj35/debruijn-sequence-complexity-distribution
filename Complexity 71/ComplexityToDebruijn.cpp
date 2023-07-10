@@ -3,7 +3,10 @@
 int n;
 map<string, int> bin_to_dec1;
 
-ComplexityToDebruijn::ComplexityToDebruijn(int complexity, int order) : complexity(complexity), order(order), total_seq_num(0) {}
+ComplexityToDebruijn::ComplexityToDebruijn(int complexity, int order) : order(order), total_seq_num(0) {
+    this->complexity = complexity;
+    this->sub_complexity = this->complexity - pow(2,order - 1);
+}
 
 map<string, int> generateStringMap() {
     map<string, int> stringMap;
@@ -62,7 +65,7 @@ static bool validate(string seq){
     return ranges::all_of(sub_seq, [](bool i) { return i; });
 }
 
-static bool IsRotation(const std::string& s1, std::string s2)
+bool ComplexityToDebruijn::isRotation(const std::string& s1, std::string s2)
 {
     if (s1.size() != s2.size())
         return false;
@@ -81,13 +84,14 @@ static bool IsRotation(const std::string& s1, std::string s2)
 }
 
 void ComplexityToDebruijn::compute() {
-    SequenceGenerator sub_sequences(this->complexity);
-    auto sub_seq = sub_sequences.getSequences();
+    SequenceGenerator sub_sequences(this->sub_complexity);
+    auto sub_seq = removeRotations(sub_sequences.getSequences());
     for (auto seq : sub_seq) {
         this->subseq_to_debruijn.insert({seq, fromSubseqToDebruijn(seq)});
     }
 }
-static void generateXORStrings(const string& s, string& a, string& b, int index, vector<pair<string,string>>& options, vector<bool> check) {
+
+void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string& b, int index, vector<pair<string,string>>& options, vector<bool> check) {
 //static void generateXORStrings(const string& s, string& a, string& b, int index, ll& options, vector<bool> check) {
     if (index == s.size()) {
         auto a_b = a+b;
@@ -103,13 +107,13 @@ static void generateXORStrings(const string& s, string& a, string& b, int index,
         }
         if (find(options.begin(), options.end(), make_pair(b, a)) == options.end()) {
             for (auto aux: options){
-                if (IsRotation(a_b, aux.first+aux.second)){
+                if (isRotation(a_b, aux.first+aux.second)){
                     return;
                 }
             }
             options.emplace_back(a, b);
         }
-//        cout << a+b << endl;
+        cout << a+b << endl;
 //        if (validate(a+b)) options++;
         return;
     }
@@ -190,7 +194,11 @@ static void generateXORStrings(const string& s, string& a, string& b, int index,
     }
 }
 
-static vector<pair<string,string>>  getAllXORStrings(const string& s) {
+/*
+ * TODO:
+ * remove rotations in an efficient way
+ */
+vector<pair<string,string>> ComplexityToDebruijn::getAllXORStrings(const string& s) {
 //static ll  getAllXORStrings(const string& s) {
     vector<pair<string,string>> options, filtered_options;
 //    ll options = 0;
@@ -199,6 +207,7 @@ static vector<pair<string,string>>  getAllXORStrings(const string& s) {
     generateXORStrings(s, a, b, 0, options, check);
     return options;
 }
+
 bool comparePairs(const pair<string, string>& a, const pair<string, string>& b) {
     return a.first < b.first;
 }
@@ -301,36 +310,27 @@ ll ComplexityToDebruijn::fromSubseqToDebruijn(string seq) {
     ll count = 0;
     n = this->order;
     bin_to_dec1 = generateStringMap();
-//    ll options = getAllXORStrings(seq);
-//    cout << options << endl;
     vector<pair<string,string>> options = getAllXORStrings(seq);
 //    for(auto p : options){
-//        cout << "(" << p.first << ")" ;
-//        cout << "(" << p.second << ")" << endl;
+//        cout << "(" << p.first+p.second << ")" << endl;
 //    }
 
-//    vector<string> filtered_de_bruijn;
-//    vector<pair<string,string>> filtered_options;
-//    n = this->order;
-//    map<string, int> bin_to_dec = generateStringMap();
-//    copy_if(options.begin(), options.end(), back_inserter(filtered_options), [](const pair<string,string>& s) {
-//        map<string, int> bin_to_dec = generateStringMap();
-//        int i_f1 = bin_to_dec[s.first.substr(0, n)];
-//        int i_f2 = bin_to_dec[s.first.substr(1, n)];
-//        int i_s1 = bin_to_dec[s.second.substr(0, n)];
-//        int i_s2 = bin_to_dec[s.second.substr(1, n)];
-//        return i_f1 != i_f2 && i_s1 != i_s2 && i_f1 != i_s2 && i_s1 != i_f2 && i_s2 != i_f2 && i_s1 != i_f1;
-//    });
-//    for(auto p : filtered_options){
-//        cout << "(" << p.first << ") (" << p.second << ")" << endl;
-//    }
-//    vector<string> all_sequences;
-//    auto pair_comb = choosePairs(filtered_options, bin_to_dec, all_sequences);
-//
-//    copy_if(all_sequences.begin(), all_sequences.end(), back_inserter(filtered_de_bruijn), [](const string& s) {
-//        return validate(s);
-//    });
-////    set<string> used;
-////    generateDebruijn(options, 0, used, check, pow(2, this->order - 1), "", "");
     return options.size();
+}
+
+vector<string> ComplexityToDebruijn::removeRotations(const vector<string> &sequences) {
+    vector<string> distinct_sequences;
+    for (auto seq:sequences) {
+        bool rotation = false;
+        for (auto d_sub:distinct_sequences){
+            if(isRotation(d_sub,seq)){
+                rotation = true;
+                break;
+            }
+        }
+        if (!rotation){
+            distinct_sequences.emplace_back(seq);
+        }
+    }
+    return distinct_sequences;
 }
