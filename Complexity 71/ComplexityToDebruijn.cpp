@@ -1,6 +1,7 @@
 #include "ComplexityToDebruijn.h"
 #include "set"
 int n;
+ll amount_of_sequences_overall = 0;
 map<string, int> bin_to_dec1;
 
 ComplexityToDebruijn::ComplexityToDebruijn(int complexity, int order) : order(order), total_seq_num(0) {
