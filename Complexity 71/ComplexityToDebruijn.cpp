@@ -2,6 +2,7 @@
 #include "set"
 int n;
 ll amount_of_sequences_overall = 0;
+int sub_seq_len;
 map<string, int> bin_to_dec1;
 
 ComplexityToDebruijn::ComplexityToDebruijn(int complexity, int order) : order(order), total_seq_num(0) {
@@ -87,7 +88,8 @@ bool ComplexityToDebruijn::isRotation(const std::string& s1, std::string s2)
 void ComplexityToDebruijn::compute() {
     SequenceGenerator sub_sequences(this->sub_complexity);
     auto sub_seq = removeRotations(sub_sequences.getSequences());
-    for (auto seq : sub_seq) {
+    this->sub_len = sub_seq[0].length();
+    for (const auto& seq : sub_seq) {
         this->subseq_to_debruijn.insert({seq, fromSubseqToDebruijn(seq)});
     }
 }
@@ -112,9 +114,10 @@ void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string
                     return;
                 }
             }
-            cout << a+b << endl;
             options.emplace_back(a, b);
         }
+        cout << a+b << endl;
+
 //        if (validate(a+b)) options++;
         return;
     }
@@ -311,6 +314,8 @@ ll ComplexityToDebruijn::fromSubseqToDebruijn(string seq) {
     ll count = 0;
     n = this->order;
     bin_to_dec1 = generateStringMap();
+    //sub_seq_len = this->sub_len; //TODO: add this when using compute
+    sub_seq_len = 16;
     vector<pair<string,string>> options = getAllXORStrings(seq);
 //    for(auto p : options){
 //        cout << "(" << p.first+p.second << ")" << endl;
