@@ -92,9 +92,9 @@ static bool _isRotation(const std::string& s1, std::string s2)
     if (s1 == s2)
         return true;
 
-    for (size_t i = 0; i < s2.size()/8; i++)
+    for (size_t i = 0; i < s2.size()/16; i++)
     {
-        std::rotate(s2.begin(), s2.begin() + 8, s2.end());
+        std::rotate(s2.begin(), s2.begin() + 16, s2.end());
         if (s1 == s2)
             return true;
     }
