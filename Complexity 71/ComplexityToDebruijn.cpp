@@ -84,6 +84,23 @@ bool ComplexityToDebruijn::isRotation(const std::string& s1, std::string s2)
     return false;
 }
 
+static bool _isRotation(const std::string& s1, std::string s2)
+{
+    if (s1.size() != s2.size())
+        return false;
+
+    if (s1 == s2)
+        return true;
+
+    for (size_t i = 0; i < s2.size()/8; i++)
+    {
+        std::rotate(s2.begin(), s2.begin() + 8, s2.end());
+        if (s1 == s2)
+            return true;
+    }
+
+    return false;
+}
 void ComplexityToDebruijn::compute() {
     SequenceGenerator sub_sequences(this->sub_complexity);
     auto sub_seq = removeRotations(sub_sequences.getSequences());
@@ -106,13 +123,15 @@ void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string
             }
             else return;
         }
+
+        //cout << a+b << endl;
         if (find(options.begin(), options.end(), make_pair(b, a)) == options.end()) {
             for (auto aux: options){
-                if (isRotation(a_b, aux.first+aux.second)){
+                if (_isRotation(a_b, aux.first+aux.second)){
                     return;
                 }
             }
-            cout << a+b << endl;
+            //cout << a+b << endl;
             options.emplace_back(a, b);
         }
 //        if (validate(a+b)) options++;
