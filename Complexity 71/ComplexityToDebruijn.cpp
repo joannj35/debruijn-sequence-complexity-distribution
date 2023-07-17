@@ -80,9 +80,9 @@ bool ComplexityToDebruijn::isRotation(const std::string& s1, std::string s2)
 
 void ComplexityToDebruijn::compute() {
     SequenceGenerator sub_sequences(this->sub_complexity);
-    auto sub_seq = removeRotations(sub_sequences.getSequences());
+    auto sub_seq =sub_sequences.getSequences();
     vector<pair<string,ll>> subseq_to_db(sub_seq.size());
-    this->up_to_1000 = vector<pair<string, vector<string>>>(sub_seq.size());
+    this->up_to_1000 = vector<vector<string>>(sub_seq.size());
     int i;
     #pragma omp parallel for schedule(dynamic) shared(subseq_to_db,sub_seq,n) private(i) default(none)
     for(i = 0; i < sub_seq.size(); i++) {
@@ -96,7 +96,7 @@ void ComplexityToDebruijn::compute() {
         #pragma omp critical
         subseq_to_db[i] = {seq, num};
         #pragma omp critical
-        this->up_to_1000[i] = {seq, db_seq};
+        this->up_to_1000[i] = db_seq;
     }
     this->subseq_to_debruijn = subseq_to_db;
 }
@@ -208,6 +208,6 @@ const vector<pair<string, ll>> &ComplexityToDebruijn::getSubseqToDebruijn() cons
     return subseq_to_debruijn;
 }
 
-const vector<pair<string, vector<string>>> &ComplexityToDebruijn::getUpTo1000() const {
+const vector<vector<string>> &ComplexityToDebruijn::getUpTo1000() const {
     return up_to_1000;
 }

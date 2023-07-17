@@ -17,6 +17,7 @@ class SequenceGenerator {
     int num_of_seq{};
     vector<char> alphabet;
     void generateSequences();
+    void generatePermutations(const string& current);
 public:
     int getNumOfSeq() const;
 
@@ -25,7 +26,6 @@ public:
                                                                                   alphabet(alphabet), num_of_seq(0) {
         this->generateSequences();
     }
-
     const vector<string> &getSequences() const;
 };
 
