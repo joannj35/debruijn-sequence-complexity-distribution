@@ -2,23 +2,19 @@
 
 #include <utility>
 
-static void generatePermutations(const vector<char>& alphabet, int size, const string& current, vector<string>& permutations) {
-    if (current.size() == size) {
-        permutations.push_back(current);
-        return;
-    }
+static bool isRotation(const std::string& s1, const std::string& s2)
+{
+    if (s1.size() != s2.size())
+        return false;
 
-    for (char ch: alphabet) {
-        string newCurrent = current + ch;
-        generatePermutations(alphabet, size, newCurrent, permutations);
-    }
+    if (s1 == s2)
+        return true;
+
+    string temp = s1 + s1;
+    return (temp.find(s2) != string::npos);
 }
 
-static vector<string> permutations(const vector<char>& alphabet, int size) {
-    vector<string> result;
-    generatePermutations(alphabet, size, "", result);
-    return result;
-}
+/// runs games-chan algorithm
 static int checkComplexity(const std::string& S, int m) {
     if (m == 0){
         return 0;
@@ -52,15 +48,27 @@ static int checkComplexity(const std::string& S, int m) {
     return m_1;
 }
 
+void SequenceGenerator::generatePermutations(const string& current) {
+    if (current.size() == this->seq_len) {
+        if (checkComplexity(current, log2(this->seq_len)) == this->complexity - 1) {
+            for (const auto & sequence : this->sequences) {
+                if (isRotation(current, sequence))
+                    return;
+            }
+            this->sequences.push_back(current);
+        }
+        return;
+    }
+
+    for (char ch: alphabet) {
+        string newCurrent = current + ch;
+        generatePermutations(newCurrent);
+    }
+}
 
 void SequenceGenerator::generateSequences() {
-    vector<string> sequences_perm = permutations(this->alphabet,this->seq_len);
-    for (const auto& seq: sequences_perm) {
-        if (checkComplexity(seq, log2(this->seq_len)) == this->complexity - 1){
-            this->sequences.push_back(seq);
-            this->num_of_seq++;
-        }
-    }
+    generatePermutations("");
+    this->num_of_seq = this->sequences.size();
 }
 
 const vector<string> &SequenceGenerator::getSequences() const {
