@@ -11,7 +11,7 @@ using namespace std;
 int main(){
     omp_set_num_threads(24);
     cout << "Starting..." << endl;
-    auto start = high_resolution_clock::now();
+    /*auto start = high_resolution_clock::now();
     SequenceGenerator se(17);
     auto d = se.getSequences();
     cout << se.getNumOfSeq() << endl;
@@ -21,9 +21,9 @@ int main(){
     auto end = high_resolution_clock::now();
     auto duration= duration_cast<seconds>(end - start);
     cout << duration.count() << " seconds" << endl;
-    return 0;
+    return 0;*/
     int order = 7;
-    for(int c = 78; c <= 80; c++){
+    for(int c = 79; c <= 80; c++){
         std::ofstream out("order_"+ to_string(order)+"_complexity_"+ to_string(c) +"_omp.txt");
         std::streambuf *coutbuf = std::cout.rdbuf(); //save old buf
         std::cout.rdbuf(out.rdbuf()); //redirect std::cout to out.txt!
