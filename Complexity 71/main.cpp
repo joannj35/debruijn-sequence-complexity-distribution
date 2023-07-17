@@ -12,7 +12,7 @@ int main(){
     omp_set_num_threads(24);
     cout << "Starting..." << endl;
     int order = 7;
-    for(int c = 75; c <= 80; c++){
+    for(int c = 78; c <= 80; c++){
         std::ofstream out("order_"+ to_string(order)+"_complexity_"+ to_string(c) +"_omp.txt");
         std::streambuf *coutbuf = std::cout.rdbuf(); //save old buf
         std::cout.rdbuf(out.rdbuf()); //redirect std::cout to out.txt!
@@ -52,8 +52,8 @@ int main(){
             cout << "overall execution time is " << duration_cast<milliseconds>(end - start).count() << " milliseconds" << endl;
         else if(duration.count() > 60)
             cout << "overall execution time is " << duration_cast<minutes>(end - start).count() << " minutes" << endl;
-        else if(duration.count() > 3600)
-            cout << "overall execution time is " << duration_cast<hours>(end - start).count() << " hours" << endl;
+        else if(duration.count() >= 3600)
+            cout << "overall execution time is " << duration_cast<hours>(end - start).count() << " hours, " << duration_cast<minutes>(end - start).count() % 60 << " minutes" << endl;
         else
             cout << "overall execution time is " << duration.count() << " seconds" << endl;
 
@@ -66,7 +66,7 @@ int main(){
         else if(duration.count() > 60 && duration.count() < 3600)
             cout << "overall execution time is " << duration_cast<minutes>(end - start).count() << " minutes" << endl;
         else if(duration.count() >= 3600)
-            cout << "overall execution time is " << duration_cast<hours>(end - start).count() << " hours, " << duration_cast<minutes>(end - start).count() % 3600 << " minutes" << endl;
+            cout << "overall execution time is " << duration_cast<hours>(end - start).count() << " hours, " << duration_cast<minutes>(end - start).count() % 60 << " minutes" << endl;
         else
             cout << "overall execution time is " << duration.count() << " seconds" << endl;
 
