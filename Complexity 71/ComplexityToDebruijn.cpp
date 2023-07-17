@@ -82,22 +82,26 @@ void ComplexityToDebruijn::compute() {
     SequenceGenerator sub_sequences(this->sub_complexity);
     auto sub_seq = removeRotations(sub_sequences.getSequences());
     vector<pair<string,ll>> subseq_to_db(sub_seq.size());
+    this->up_to_1000 = vector<pair<string, vector<string>>>(sub_seq.size());
     int i;
     #pragma omp parallel for schedule(dynamic) shared(subseq_to_db,sub_seq,n) private(i) default(none)
     for(i = 0; i < sub_seq.size(); i++) {
         auto seq = sub_seq[i];
-        string x = seq + seq;
+        string x = seq + seq + seq + seq;
         if (seq.size() == 8) {
-            x += seq + seq;
+            x += seq + seq + seq + seq;
         }
-        ll num = fromSubseqToDebruijn(x);
+        vector<string> db_seq;
+        ll num = fromSubseqToDebruijn(x,db_seq);
         #pragma omp critical
         subseq_to_db[i] = {seq, num};
+        #pragma omp critical
+        this->up_to_1000[i] = {seq, db_seq};
     }
     this->subseq_to_debruijn = subseq_to_db;
 }
 
-void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string& b, int index, vector<pair<string,string>>& options, vector<bool> check) {
+void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string& b, int index, vector<pair<string,string>>& options, vector<bool> check, vector<string>& db_seq) {
     if (index == s.size()) {
         auto a_b = a + b;
         auto b_a = b + a;
@@ -117,8 +121,8 @@ void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string
                     return;
                 }
             }
-//            if(options.size() <= 1000)
-//                cout << a+b << endl;
+            if(db_seq.size() < 1000)
+                db_seq.push_back(a+b);
             options.emplace_back(a, b);
         }
         return;
@@ -140,12 +144,12 @@ void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string
             if (!check[a_sub] && !check[b_sub] && a_sub != b_sub) {
                 check[a_sub] = true;
                 check[b_sub] = true;
-                generateXORStrings(s, a, b, index + 1, options, check);
+                generateXORStrings(s, a, b, index + 1, options, check, db_seq);
                 check[a_sub] = false;
                 check[b_sub] = false;
             }
         } else {
-            generateXORStrings(s, a, b, index + 1, options, check);
+            generateXORStrings(s, a, b, index + 1, options, check,db_seq);
         }
         a.pop_back();
         b.pop_back();
@@ -157,25 +161,25 @@ void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string
  * TODO:
  * remove rotations in an efficient way
  */
-vector<pair<string,string>> ComplexityToDebruijn::getAllXORStrings(string s) {
+vector<pair<string,string>> ComplexityToDebruijn::getAllXORStrings(string s, vector<string>& db_seq) {
 //static ll  getAllXORStrings(const string& s) {
     vector<pair<string,string>> options, filtered_options;
 //    ll options = 0;
     string a = "", b = "";
     vector<bool> check(pow(2,n), false);
     //#pragma omp task private(s, a, b, options, bin_to_dec1,check) default(none)
-    generateXORStrings(s, a, b, 0, options, check);
+    generateXORStrings(s, a, b, 0, options, check,db_seq);
     return options;
 }
 
-ll ComplexityToDebruijn::fromSubseqToDebruijn(string seq) {
+ll ComplexityToDebruijn::fromSubseqToDebruijn(string seq, vector<string>& db_seq) {
     ll count = 0;
     n = this->order;
     //bin_to_dec1 = generateStringMap();
     vector<pair<string,string>> options;
 //
 //    #pragma omp task private(seq, options, bin_to_dec1) default(none)
-    options = getAllXORStrings(seq);
+    options = getAllXORStrings(seq,db_seq);
 //    for(auto p : options){
 //        cout << "(" << p.first+p.second << ")" << endl;
 //    }
@@ -202,4 +206,8 @@ vector<string> ComplexityToDebruijn::removeRotations(const vector<string> &seque
 
 const vector<pair<string, ll>> &ComplexityToDebruijn::getSubseqToDebruijn() const {
     return subseq_to_debruijn;
+}
+
+const vector<pair<string, vector<string>>> &ComplexityToDebruijn::getUpTo1000() const {
+    return up_to_1000;
 }
