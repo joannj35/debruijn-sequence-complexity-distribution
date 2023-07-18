@@ -9,10 +9,10 @@ if (OPENMP_FOUND)
 endif()
 
 include_directories(.)
-include_directories("Complexity 71")
+include_directories("Solution")
 
 add_executable(debruijn_sequence_complexity
-        "Complexity 71/main.cpp"
-        "Complexity 71/SequenceGenerator.cpp"
-        "Complexity 71/SequenceGenerator.h"
-        "Complexity 71/ComplexityToDebruijn.h" "Complexity 71/ComplexityToDebruijn.cpp" "Complexity 71/PairCombinations.cpp")
+        "Solution/main.cpp"
+        "Solution/SequenceGenerator.cpp"
+        "Solution/SequenceGenerator.h"
+        "Solution/ComplexityToDebruijn.h" "Solution/ComplexityToDebruijn.cpp" "Solution/PairCombinations.cpp")

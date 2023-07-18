@@ -1,4 +1,4 @@
-#include "DeBruijnGraph.h"
+#include "DebruijnGraph.h"
 
 #include <iostream>
 #include <algorithm>
