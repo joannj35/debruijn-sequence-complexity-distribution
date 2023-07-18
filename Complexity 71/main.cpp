@@ -61,7 +61,7 @@ int main(){
 
         if(duration.count() < 1)
             cout << "overall execution time is " << duration_cast<milliseconds>(end - start).count() << " milliseconds" << endl;
-        else if(duration.count() > 60)
+        else if(duration.count() > 60 && duration.count() < 3600)
             cout << "overall execution time is " << duration_cast<minutes>(end - start).count() << " minutes" << endl;
         else if(duration.count() >= 3600)
             cout << "overall execution time is " << duration_cast<hours>(end - start).count() << " hours, " << duration_cast<minutes>(end - start).count() % 60 << " minutes" << endl;
