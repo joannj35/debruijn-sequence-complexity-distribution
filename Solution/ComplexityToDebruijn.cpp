@@ -87,6 +87,7 @@ void ComplexityToDebruijn::compute() {
     #pragma omp parallel for schedule(dynamic) shared(subseq_to_db,sub_seq,n) private(i) default(none)
     for(i = 0; i < sub_seq.size(); i++) {
         auto seq = sub_seq[i];
+        if(!isRotation("00000011", seq)) continue;
         string x = seq + seq + seq + seq;
         if (seq.size() == 8) {
             x += seq + seq + seq + seq;
@@ -103,6 +104,7 @@ void ComplexityToDebruijn::compute() {
 
 void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string& b, int index, vector<pair<string,string>>& options, vector<bool> check, vector<string>& db_seq) {
     if (index == s.size()) {
+        if (options.size()%1000 == 0) cout << "current size: " << options.size() << endl;
         auto a_b = a + b;
         auto b_a = b + a;
         for (int i = n - 1; i > 0; i--) {
@@ -165,10 +167,24 @@ vector<pair<string,string>> ComplexityToDebruijn::getAllXORStrings(string s, vec
 //static ll  getAllXORStrings(const string& s) {
     vector<pair<string,string>> options, filtered_options;
 //    ll options = 0;
-    string a = "", b = "";
+    string a = "1000000", b;
+    for (int i = 0; i < a.size(); i++){
+        if (s[i] == '0'){
+            b += a[i];
+        } else {
+            if(a[i] == '0')
+                b += '1';
+            else
+                b += '0';
+        }
+    }
+
     vector<bool> check(pow(2,n), false);
+    check[binaryToDecimal(a)] = true;
+    check[binaryToDecimal(b)] = true;
+//    check[binaryToDecimal("0000011")] = true;
     //#pragma omp task private(s, a, b, options, bin_to_dec1,check) default(none)
-    generateXORStrings(s, a, b, 0, options, check,db_seq);
+    generateXORStrings(s, a, b, 7, options, check,db_seq);
     return options;
 }
 

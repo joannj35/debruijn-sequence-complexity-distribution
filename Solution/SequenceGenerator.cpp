@@ -51,10 +51,10 @@ static int checkComplexity(const std::string& S, int m) {
 void SequenceGenerator::generatePermutations(const string& current) {
     if (current.size() == this->seq_len) {
         if (checkComplexity(current, log2(this->seq_len)) == this->complexity - 1) {
-            for (const auto & sequence : this->sequences) {
-                if (isRotation(current, sequence))
-                    return;
-            }
+//            for (const auto & sequence : this->sequences) {
+////                if (isRotation(current, sequence))
+////                    return;
+//            }
             this->sequences.push_back(current);
         }
         return;
@@ -67,8 +67,15 @@ void SequenceGenerator::generatePermutations(const string& current) {
 }
 
 void SequenceGenerator::generateSequences() {
-    generatePermutations("");
-    this->num_of_seq = this->sequences.size();
+    if (seq_len <= 16){
+        //generate all possible binary sequences of length seq_len and return all sequences with the desired complexity
+        generatePermutations("");
+        this->num_of_seq = this->sequences.size();
+    } else {
+        auto indices = expand_over_Z2(complexity - 1);
+
+    }
+
 }
 
 const vector<string> &SequenceGenerator::getSequences() const {
@@ -79,4 +86,43 @@ int SequenceGenerator::getNumOfSeq() const {
     return num_of_seq;
 }
 
+// Function to check if binomial coefficient n choose k is odd over Z_2
+static bool isOdd(int n, int k) {
+    return (n & k) == k;
+}
+
+vector<int> SequenceGenerator::expand_over_Z2(int n) {
+    std::vector<int> expansion;
+    for (int k = 0; k <= n; k++) {
+        if (isOdd(n, k)) {
+            if (k == n) {
+                expansion.push_back(0);
+            } else if (k == n - 1) {
+                expansion.push_back(1);
+            } else {
+                expansion.push_back(n - k);
+            }
+        }
+    }
+    return expansion;
+}
+
+void SequenceGenerator::sequencesFromIndices(const vector<int>& indices, int index, const string &current) {
+    if(index == indices.size()){
+        return;
+    }
+}
+
+
+//int main() {
+//    int n;
+//    std::cout << "Enter a value for n: ";
+//    while (true){
+//        std::cin >> n;
+//        if(n == 0) break;
+//        std::cout << "The expansion of (x + 1)^" << n << " over Z_2 is:\n";
+//        std::cout << expand_over_Z2(n) << std::endl;
+//    }
+//    return 0;
+//}
 

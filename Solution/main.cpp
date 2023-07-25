@@ -9,24 +9,22 @@ using namespace std::chrono;
 using namespace std;
 
 int main(){
-    omp_set_num_threads(24);
+    omp_set_num_threads(8);
     cout << "Starting..." << endl;
-    /*auto start = high_resolution_clock::now();
-    SequenceGenerator se(17);
-    auto d = se.getSequences();
-    cout << se.getNumOfSeq() << endl;
-    for (int i = 0; i < d.size(); ++i) {
-        cout << d[i] << endl;
-    }
-    auto end = high_resolution_clock::now();
-    auto duration= duration_cast<seconds>(end - start);
-    cout << duration.count() << " seconds" << endl;
-    return 0;*/
+//    auto start = high_resolution_clock::now();
+//    SequenceGenerator se(7);
+//    auto d = se.getSequences();
+//    cout << se.getNumOfSeq() << endl;
+//    for (int i = 0; i < d.size(); ++i) {
+//        cout << d[i] << endl;
+//    }
+//    auto end = high_resolution_clock::now();
+//    auto duration= duration_cast<seconds>(end - start);
+//    cout << duration.count() << " seconds" << endl;
+//    return 0;
     int order = 7;
-    for(int c = 79; c <= 80; c++){
-        std::ofstream out("order_"+ to_string(order)+"_complexity_"+ to_string(c) +"_omp.txt");
-        std::streambuf *coutbuf = std::cout.rdbuf(); //save old buf
-        std::cout.rdbuf(out.rdbuf()); //redirect std::cout to out.txt!
+    for(int c = 71; c <= 71; c++){
+
 
         auto start = high_resolution_clock::now();
 
@@ -41,6 +39,9 @@ int main(){
         */
         cout << "For order "<< order << " complexity "<< complexity<< ":" << endl;
         C.compute();
+        std::ofstream out("order_"+ to_string(order)+"_complexity_"+ to_string(c) +"_test.txt");
+        std::streambuf *coutbuf = std::cout.rdbuf(); //save old buf
+        std::cout.rdbuf(out.rdbuf()); //redirect std::cout to out.txt!
         auto res = C.getSubseqToDebruijn();
         auto to_print = C.getUpTo1000();
         for (int i = 0; i < res.size(); ++i) {

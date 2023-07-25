@@ -18,14 +18,17 @@ class SequenceGenerator {
     vector<char> alphabet;
     void generateSequences();
     void generatePermutations(const string& current);
+    void sequencesFromIndices(const vector<int>& , int index, const string& current);
 public:
     int getNumOfSeq() const;
 
-    explicit SequenceGenerator(int complexity, const vector<char> &alphabet = {'0', '1'}) : seq_len(pow(2,ceil(log2(complexity)))),
-                                                                                  complexity(complexity),
-                                                                                  alphabet(alphabet), num_of_seq(0) {
+    explicit SequenceGenerator(int complexity, const vector<char> &alphabet = {'0', '1'}) :
+                                                                    seq_len(pow(2,ceil(log2(complexity)))),
+                                                                    complexity(complexity),
+                                                                    alphabet(alphabet), num_of_seq(0) {
         this->generateSequences();
     }
+    vector<int> expand_over_Z2(int n);
     const vector<string> &getSequences() const;
 };
 
