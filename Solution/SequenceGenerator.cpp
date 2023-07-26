@@ -49,6 +49,8 @@ static int checkComplexity(const std::string& S, int m) {
 }
 
 void SequenceGenerator::generatePermutations(const string& current) {
+    if (this->sequences.size() == (8192*2))
+        return;
     if (current.size() == this->seq_len) {
         if (checkComplexity(current, log2(this->seq_len)) == this->complexity - 1) {
             for (const auto & sequence : this->sequences) {

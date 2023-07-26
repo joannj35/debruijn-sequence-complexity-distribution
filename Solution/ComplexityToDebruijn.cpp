@@ -79,30 +79,41 @@ bool ComplexityToDebruijn::isRotation(const std::string& s1, std::string s2)
 }
 
 void ComplexityToDebruijn::compute() {
+    cout << "sub sequence start..." << endl;
     SequenceGenerator sub_sequences(this->sub_complexity);
     auto sub_seq =sub_sequences.getSequences();
     vector<pair<string,ll>> subseq_to_db(sub_seq.size());
     this->up_to_1000 = vector<vector<string>>(sub_seq.size());
     int i;
-    #pragma omp parallel for schedule(dynamic) shared(subseq_to_db,sub_seq,n) private(i) default(none)
+    cout << "sub seq calc done" << endl;
+    #pragma omp parallel for schedule(dynamic) shared(subseq_to_db,sub_seq,n,cout) private(i) default(none)
     for(i = 0; i < sub_seq.size(); i++) {
         auto seq = sub_seq[i];
-        string x = seq + seq + seq + seq;
+        string x = seq + seq;
+        if (seq.size() <= 16) {
+            x += seq + seq;
+        }
         if (seq.size() == 8) {
             x += seq + seq + seq + seq;
         }
         vector<string> db_seq;
         ll num = fromSubseqToDebruijn(x,db_seq);
         #pragma omp critical
+        cout << "sequence #" << i << ": " << seq << " - " << num <<endl;
+        #pragma omp critical
         subseq_to_db[i] = {seq, num};
         #pragma omp critical
         this->up_to_1000[i] = db_seq;
+
     }
     this->subseq_to_debruijn = subseq_to_db;
 }
 
 void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string& b, int index, vector<pair<string,string>>& options, vector<bool> check, vector<string>& db_seq) {
     if (index == s.size()) {
+        //if(options.size() % 1000 == 0 && options.size() != 0){
+          //  cout << "Current size = " << options.size() << endl;
+        //}
         auto a_b = a + b;
         auto b_a = b + a;
         for (int i = n - 1; i > 0; i--) {
@@ -116,14 +127,42 @@ void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string
             }
         }
         if (find(options.begin(), options.end(), make_pair(b, a)) == options.end()) {
-            for (const auto& op: options){
-                if (isRotation(a_b, op.first + op.second)){
+            for (const auto &op: options) {
+                if (isRotation(a_b, op.first + op.second)) {
                     return;
                 }
             }
-            if(db_seq.size() < 1000)
-                db_seq.push_back(a+b);
+            if (db_seq.size() < 1000)
+                db_seq.push_back(a + b);
             options.emplace_back(a, b);
+            /*bool found_rotation = false;
+            #pragma omp parallel for shared(found_rotation, options, a_b) default(none)
+            for (int i = 0; i < options.size(); i++) {
+                if (found_rotation) {
+                    continue; // Skip the remaining iterations if found_rotation is true
+                }
+
+                const auto &op = options[i];
+                if (isRotation(a_b, op.first + op.second)) {
+                    #pragma omp critical
+                    {
+                        if (!found_rotation) { // Check again inside the critical section to avoid race conditions
+                            found_rotation = true;
+                        }
+                    }
+                }
+            }
+
+            if (!found_rotation) {
+                if (db_seq.size() < 1000) {
+                    // Ensure that the push_back operation is thread-safe
+                    #pragma omp critical
+                    {
+                        db_seq.push_back(a + b);
+                    }
+                }
+                options.emplace_back(a, b);
+            }*/
         }
         return;
     }
