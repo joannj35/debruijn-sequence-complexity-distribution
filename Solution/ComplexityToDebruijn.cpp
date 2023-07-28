@@ -84,16 +84,22 @@ void ComplexityToDebruijn::compute() {
     vector<pair<string,ll>> subseq_to_db(sub_seq.size());
     this->up_to_1000 = vector<vector<string>>(sub_seq.size());
     int i;
-    #pragma omp parallel for schedule(dynamic) shared(subseq_to_db,sub_seq,n) private(i) default(none)
+    #pragma omp parallel for schedule(dynamic) shared(subseq_to_db,sub_seq,n,cout) private(i) default(none)
     for(i = 0; i < sub_seq.size(); i++) {
         auto seq = sub_seq[i];
-        if(!isRotation("00000011", seq)) continue;
+        //if(isRotation("00000011", seq)) continue;
         string x = seq + seq + seq + seq;
         if (seq.size() == 8) {
             x += seq + seq + seq + seq;
         }
         vector<string> db_seq;
         ll num = fromSubseqToDebruijn(x,db_seq);
+        #pragma omp critical
+        cout << "-------------------------------------------------------------" << endl;
+        #pragma omp critical
+        cout << "sequence #" << i << ": " << seq << " - " << num << endl;
+        #pragma omp critical
+        cout << "-------------------------------------------------------------" << endl;
         #pragma omp critical
         subseq_to_db[i] = {seq, num};
         #pragma omp critical
@@ -104,7 +110,6 @@ void ComplexityToDebruijn::compute() {
 
 void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string& b, int index, vector<pair<string,string>>& options, vector<bool> check, vector<string>& db_seq) {
     if (index == s.size()) {
-        if (options.size()%1000 == 0) cout << "current size: " << options.size() << endl;
         auto a_b = a + b;
         auto b_a = b + a;
         for (int i = n - 1; i > 0; i--) {
@@ -126,6 +131,10 @@ void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string
             if(db_seq.size() < 1000)
                 db_seq.push_back(a+b);
             options.emplace_back(a, b);
+            if (options.size()%1000 == 0) {
+                #pragma omp critical
+                cout << s << " current size: " << options.size() << endl;
+            }
         }
         return;
     }
@@ -167,7 +176,7 @@ vector<pair<string,string>> ComplexityToDebruijn::getAllXORStrings(string s, vec
 //static ll  getAllXORStrings(const string& s) {
     vector<pair<string,string>> options, filtered_options;
 //    ll options = 0;
-    string a = "1000000", b;
+    string a = "0000000", b;
     for (int i = 0; i < a.size(); i++){
         if (s[i] == '0'){
             b += a[i];
