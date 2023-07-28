@@ -34,6 +34,8 @@ public:
 
     const vector<vector<string>> &getUpTo1000() const;
 
+    ll getTotalSeqNum() const;
+
     const vector<pair<string, ll>> &getSubseqToDebruijn() const;
 
 };
