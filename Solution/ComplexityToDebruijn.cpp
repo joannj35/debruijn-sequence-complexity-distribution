@@ -87,7 +87,6 @@ void ComplexityToDebruijn::compute() {
     #pragma omp parallel for schedule(dynamic) shared(subseq_to_db,sub_seq,n,cout) private(i) default(none)
     for(i = 0; i < sub_seq.size(); i++) {
         auto seq = sub_seq[i];
-        //if(isRotation("00000011", seq)) continue;
         string x = seq + seq + seq + seq;
         if (seq.size() == 8) {
             x += seq + seq + seq + seq;
@@ -95,15 +94,13 @@ void ComplexityToDebruijn::compute() {
         vector<string> db_seq;
         ll num = fromSubseqToDebruijn(x,db_seq);
         #pragma omp critical
+        {
         cout << "-------------------------------------------------------------" << endl;
-        #pragma omp critical
         cout << "sequence #" << i << ": " << seq << " - " << num << endl;
-        #pragma omp critical
         cout << "-------------------------------------------------------------" << endl;
-        #pragma omp critical
         subseq_to_db[i] = {seq, num};
-        #pragma omp critical
         this->up_to_1000[i] = db_seq;
+        }
     }
     this->subseq_to_debruijn = subseq_to_db;
 }
