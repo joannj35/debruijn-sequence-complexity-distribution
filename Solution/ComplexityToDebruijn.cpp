@@ -93,18 +93,12 @@ void ComplexityToDebruijn::compute() {
     auto duration= duration_cast<std::chrono::seconds>(end - start);
     cout << "sub seq calc done in " << duration.count() << " seconds" << endl;
     std::ofstream fileout("order_"+ to_string(order)+"_complexity_"+ to_string(complexity) +"_omp.txt");
-    cout << "For order "<< order << " complexity "<< complexity<< ":" << endl;
+    fileout << "For order "<< order << " complexity "<< complexity<< ":" << endl;
     start = std::chrono::high_resolution_clock::now();
     #pragma omp parallel for schedule(dynamic) shared(subseq_to_db,sub_seq,n,cout,fileout) private(i) default(none)
     for(i = 0; i < sub_seq.size(); i++) {
         auto seq = sub_seq[i];
-        string x = seq + seq;
-        if (seq.size() <= 16) {
-            x += seq + seq;
-        }
-        if (seq.size() == 8) {
-            x += seq + seq + seq + seq;
-        }
+        string x = seq;
         vector<string> db_seq;
         ll num = fromSubseqToDebruijn(x,db_seq);
 
@@ -143,7 +137,7 @@ void ComplexityToDebruijn::compute() {
 }
 
 void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string& b, int index, vector<pair<string,string>>& options, vector<bool> check, vector<string>& db_seq) {
-    if (index == s.size()) {
+    if (index == pow(2, order - 1)) {
         //if(options.size() % 1000 == 0 && options.size() != 0){
           //  cout << "Current size = " << options.size() << endl;
         //}
@@ -168,42 +162,14 @@ void ComplexityToDebruijn::generateXORStrings(const string& s, string& a, string
             if (db_seq.size() < 1000)
                 db_seq.push_back(a + b);
             options.emplace_back(a, b);
-            /*bool found_rotation = false;
-            #pragma omp parallel for shared(found_rotation, options, a_b) default(none)
-            for (int i = 0; i < options.size(); i++) {
-                if (found_rotation) {
-                    continue; // Skip the remaining iterations if found_rotation is true
-                }
-
-                const auto &op = options[i];
-                if (isRotation(a_b, op.first + op.second)) {
-                    #pragma omp critical
-                    {
-                        if (!found_rotation) { // Check again inside the critical section to avoid race conditions
-                            found_rotation = true;
-                        }
-                    }
-                }
-            }
-
-            if (!found_rotation) {
-                if (db_seq.size() < 1000) {
-                    // Ensure that the push_back operation is thread-safe
-                    #pragma omp critical
-                    {
-                        db_seq.push_back(a + b);
-                    }
-                }
-                options.emplace_back(a, b);
-            }*/
         }
         return;
     }
 
     vector<pair<char, char>> combinations;
-    if (s[index] == '0') {
+    if (s[index%s.size()] == '0') {
         combinations = {{'0', '0'}, {'1', '1'}};
-    } else if (s[index] == '1') {
+    } else if (s[index%s.size()] == '1') {
         combinations = {{'1', '0'}, {'0', '1'}};
     }
 
