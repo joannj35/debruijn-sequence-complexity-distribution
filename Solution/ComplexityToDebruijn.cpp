@@ -127,13 +127,27 @@ void ComplexityToDebruijn::compute() {
     ll* subseq_to_db_flatten = new ll[sub_seq.size()];
     auto up_to_1000_flatten = this->up_to_1000.data();
     int num_sub_seq = sub_seq.size();
-    #pragma omp target data map(to: sub_seq_flatten[0:sub_seq.size()]) map(to: num_sub_seq) map(from: subseq_to_db_flatten[0:sub_seq.size()], up_to_1000_flatten[0:sub_seq.size()])
+    int sub_size = sub_seq[0].size();
+    // Flatten the sub_seq data
+    char* flattened_data = new char[num_sub_seq * sub_size];
+    for (int k = 0; k < num_sub_seq; ++k) {
+        for (int j = 0; j < sub_size; ++j) {
+            flattened_data[k * sub_size + j] = sub_seq[k][j];
+        }
+    }
+
+#pragma omp target data map(to: flattened_data[0:num_sub_seq*sub_size], num_sub_seq, sub_size) map(from: subseq_to_db_flatten[0:num_sub_seq], up_to_1000_flatten[0:num_sub_seq])
     {
         // Parallelize the loop
-        #pragma omp target teams distribute parallel for schedule(dynamic) shared(num_sub_seq, sub_seq_flatten, n, up_to_1000_flatten,subseq_to_db_flatten) private(i) default(none)
+        #pragma omp target teams distribute parallel for schedule(dynamic) shared(flattened_data,sub_size,num_sub_seq, sub_seq_flatten, n, up_to_1000_flatten,subseq_to_db_flatten) private(i) default(none) num_teams(1) thread_limit(1)
         for (i = 0; i < num_sub_seq; i++) {
-            char* seq = new char[strlen(sub_seq_flatten[i])+1];
-            strcpy(seq,sub_seq_flatten[i]);
+            char seq[sub_size + 1];  // Use stack allocation
+
+            // Replace strcpy with a manual loop
+            for (int j = 0; j < sub_size; j++) {
+                seq[j] = flattened_data[i * sub_size + j];
+            }
+            seq[sub_size] = '\0';
             ll num = fromSubseqToDebruijn(seq, up_to_1000_flatten[i]);
             subseq_to_db_flatten[i] = num;
         }
@@ -186,10 +200,10 @@ static char* substring(const char* source, int start, int length) {
 void ComplexityToDebruijn::generateXORStrings(const char* s, char*& a, char*& b, int index, char**& options, bool* check, char**& db_seq, ll& options_size) {
     int size = pow(2,order);
     if (index == pow(2, order - 1)) {
-        char* a_b = new char[size+1];
+        char* a_b = new char[size];
         strcpy(a_b, a);
         strcat(a_b,b);
-        char* b_a = new char[size+1];
+        char* b_a = new char[size];
         strcpy(b_a, b);
         strcat(b_a,a);
         for (int i = n - 1; i > 0; i--) {
@@ -197,8 +211,8 @@ void ComplexityToDebruijn::generateXORStrings(const char* s, char*& a, char*& b,
             char* b_a_substr = substring(b_a, index - i, n);
             int a_sub = binaryToDecimal(a_b_substr);
             int b_sub = binaryToDecimal(b_a_substr);
-            delete [] a_b_substr;
-            delete [] b_a_substr;
+            delete[] a_b_substr;
+            delete[] b_a_substr;
             if (!check[a_sub] && !check[b_sub] && a_sub != b_sub) {
                 check[a_sub] = true;
                 check[b_sub] = true;
@@ -216,7 +230,7 @@ void ComplexityToDebruijn::generateXORStrings(const char* s, char*& a, char*& b,
             }
         }
         if (options_size < 1000){
-            db_seq[options_size] = new char[size + 1];
+            db_seq[options_size] = new char[size];
             strcpy(db_seq[options_size],a_b);
         }
         strcpy(options[options_size],a_b);
@@ -243,13 +257,15 @@ void ComplexityToDebruijn::generateXORStrings(const char* s, char*& a, char*& b,
     for (int c = 0; c < 2; c++) {
         a[index] = combinations[c*2];
         b[index] = combinations[c*2 + 1];
+        a[index + 1] = '\0';
+        b[index + 1] = '\0';
         if (index >= n) {
             char* a_substr = substring(a, index - n, n);
             char* b_substr = substring(b, index - n, n);
             int a_sub = binaryToDecimal(a_substr);
             int b_sub = binaryToDecimal(b_substr);
-            delete [] a_substr;
-            delete [] b_substr;
+            delete a_substr;
+            delete b_substr;
             if (!check[a_sub] && !check[b_sub] && a_sub != b_sub) {
                 check[a_sub] = true;
                 check[b_sub] = true;
@@ -302,21 +318,8 @@ char** ComplexityToDebruijn::getAllXORStrings(const char* s, char**& db_seq, ll&
 ll ComplexityToDebruijn::fromSubseqToDebruijn(const char* seq, char**& db_seq) {
     ll count = 0;
     n = this->order;
-    //bin_to_dec1 = generateStringMap();
-    const int maxPairs = 1000;
-    const int maxStringSize = 100;
-
-// Allocate a 1D array to hold all strings
-    char* strings = new char[2 * maxPairs * maxStringSize];
-
-// Allocate array of pointers
-    char** options = new char*[2 * maxPairs];
-
-// Initialize pointers
-    for(int i = 0; i < 2 * maxPairs; ++i) {
-        options[i] = &strings[i * maxStringSize];
-    }
     ll options_size = 0;
+    char** options;
     options = getAllXORStrings(seq,db_seq, options_size);
     return options_size;
 }
