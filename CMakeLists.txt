@@ -16,3 +16,5 @@ add_executable(debruijn_sequence_complexity
         "Solution/SequenceGenerator.cpp"
         "Solution/SequenceGenerator.h"
         "Solution/ComplexityToDebruijn.h" "Solution/ComplexityToDebruijn.cpp" "Solution/PairCombinations.cpp")
+
+target_link_libraries(${PROJECT_NAME} OpenMP::OpenMP_CXX)

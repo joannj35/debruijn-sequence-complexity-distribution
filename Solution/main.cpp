@@ -22,8 +22,8 @@ int main(){
 //    auto duration= duration_cast<seconds>(end - start);
 //    cout << duration.count() << " seconds" << endl;
 //    return 0;
-    int order = 7;
-    for(int c = 75; c <= 75; c++){
+    int order = 6;
+    for(int c = 38; c <= 55; c++){
         auto start = high_resolution_clock::now();
 
         int complexity = c;
