@@ -1,3 +1,4 @@
+
 #include "SequenceGenerator.h"
 #include <iostream>
 #include <vector>
@@ -9,7 +10,7 @@ using namespace std::chrono;
 using namespace std;
 
 int main(){
-    omp_set_num_threads(24);
+    omp_set_num_threads(16);
     cout << "Starting..." << endl;
     /*auto start = high_resolution_clock::now();
     SequenceGenerator se(21);
@@ -22,8 +23,8 @@ int main(){
     auto duration= duration_cast<seconds>(end - start);
     cout << duration.count() << " seconds" << endl;
     return 0;*/
-    int order = 6;
-    for(int c = 38; c <= 63; c++){
+    int order = 7;
+    for(int c = 85; c <= 85; c++){
         auto start = high_resolution_clock::now();
 
         int complexity = c;

@@ -84,8 +84,27 @@ bool ComplexityToDebruijn::isRotation(const std::string& s1, std::string s2)
 void ComplexityToDebruijn::compute() {
     cout << "small sequence start..." << endl;
     auto start = std::chrono::high_resolution_clock::now();
-    SequenceGenerator sub_sequences(this->sub_complexity);
-    auto sub_seq =sub_sequences.getSequences();
+    bool read_file = true;
+    vector<string> sub_seq;
+    if (read_file){
+        std::string fileName = "sequences_of_complexity_" + to_string(this->sub_complexity) +".txt"; // replace with your file name
+        std::ifstream file(fileName);
+        std::string line;
+
+            if (file.is_open()) {
+                while (getline(file, line)) {
+                    sub_seq.push_back(line);
+                }
+
+                file.close();
+            } else {
+                std::cerr << "Unable to open the file: " << fileName << std::endl;
+            }
+
+    } else {
+        SequenceGenerator sub_sequences(this->sub_complexity);
+        sub_seq = sub_sequences.getSequences();
+    }
     vector<pair<string,ll>> subseq_to_db(sub_seq.size());
     this->up_to_1000 = vector<vector<string>>(sub_seq.size());
     int i;
