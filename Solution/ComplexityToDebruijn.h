@@ -20,13 +20,15 @@ class ComplexityToDebruijn {
     int complexity;
     int order;
     int sub_complexity;
+    bool read_file;
     ll total_seq_num;
+    vector<string> skip_sequences;
     vector<vector<string>> up_to_1000;
     vector<pair<string, ll>> subseq_to_debruijn; //a map that maps the number of De bruijn sequences(value) to the sub seq that it came from
     void generateXORStrings(const string& s, string& a, string& b, int index, vector<pair<string,string>>& options, vector<bool> check, vector<string>& db_seq);
     vector<pair<string,string>>  getAllXORStrings(string s, vector<string>& db_seq);
 public:
-    ComplexityToDebruijn(int complexity, int order);
+    ComplexityToDebruijn(int complexity, int order, vector<string> skip_sequences = {}, bool read_file = false, ll total_seq_num = 0);
     void compute();
     ll fromSubseqToDebruijn(string seq, vector<string>& db_seq);
     static bool isRotation(const std::string& s1, std::string s2);

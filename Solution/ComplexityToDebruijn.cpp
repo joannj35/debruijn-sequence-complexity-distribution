@@ -7,7 +7,7 @@ int n;
 using namespace std::chrono;
 map<string, int> bin_to_dec1;
 
-ComplexityToDebruijn::ComplexityToDebruijn(int complexity, int order) : order(order), total_seq_num(0) {
+ComplexityToDebruijn::ComplexityToDebruijn(int complexity, int order, vector<string> skip_sequences, bool read_file, ll total_seq_num) : order(order), skip_sequences(skip_sequences), read_file(read_file), total_seq_num(total_seq_num){
     this->complexity = complexity;
     this->sub_complexity = this->complexity - pow(2,order - 1);
 }
@@ -84,9 +84,8 @@ bool ComplexityToDebruijn::isRotation(const std::string& s1, std::string s2)
 void ComplexityToDebruijn::compute() {
     cout << "small sequence start..." << endl;
     auto start = std::chrono::high_resolution_clock::now();
-    bool read_file = true;
     vector<string> sub_seq;
-    if (read_file){
+    if (this->read_file){
         std::string fileName = "sequences_of_complexity_" + to_string(this->sub_complexity) +".txt"; // replace with your file name
         std::ifstream file(fileName);
         std::string line;
@@ -111,9 +110,21 @@ void ComplexityToDebruijn::compute() {
     auto end = std::chrono::high_resolution_clock::now();
     auto duration= duration_cast<std::chrono::seconds>(end - start);
     cout << "sub seq calc done in " << duration.count() << " seconds" << endl;
-    std::ofstream fileout("order_"+ to_string(order)+"_complexity_"+ to_string(complexity) +"_omp.txt");
+    if (skip_sequences.size() == sub_seq.size()){
+        cout << "all sequences are skipped, file is complete" << endl;
+        return;
+    }
+    auto mode = std::ios::trunc;
+    if (!skip_sequences.empty()) {
+        mode = std::ios::app;
+    }
+    std::ofstream fileout("order_"+ to_string(order)+"_complexity_"+ to_string(complexity) +"_omp.txt",mode);
     fileout << "For order "<< order << " complexity "<< complexity<< ":" << endl;
     start = std::chrono::high_resolution_clock::now();
+    while(!skip_sequences.empty()){
+        sub_seq.erase(remove(sub_seq.begin(), sub_seq.end(), skip_sequences.back()));
+        skip_sequences.pop_back();
+    }
     #pragma omp parallel for schedule(dynamic) shared(subseq_to_db,sub_seq,n,cout,fileout) private(i) default(none)
     for(i = 0; i < sub_seq.size(); i++) {
         auto seq = sub_seq[i];
