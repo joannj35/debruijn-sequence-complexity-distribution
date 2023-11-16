@@ -107,9 +107,7 @@ void ComplexityToDebruijn::compute() {
     vector<pair<string,ll>> subseq_to_db(sub_seq.size());
     this->up_to_1000 = vector<vector<string>>(sub_seq.size());
     int i;
-    auto end = std::chrono::high_resolution_clock::now();
-    auto duration= duration_cast<std::chrono::seconds>(end - start);
-    cout << "sub seq calc done in " << duration.count() << " seconds" << endl;
+
     if (skip_sequences.size() == sub_seq.size()){
         cout << "all sequences are skipped, file is complete" << endl;
         return;
@@ -119,13 +117,20 @@ void ComplexityToDebruijn::compute() {
         mode = std::ios::app;
     }
     std::ofstream fileout("order_"+ to_string(order)+"_complexity_"+ to_string(complexity) +"_omp.txt",mode);
-    fileout << "For order "<< order << " complexity "<< complexity<< ":" << endl;
+    if(skip_sequences.empty()) {
+        fileout << "For order "<< order << " complexity "<< complexity<< ":" << endl;
+    }
+    ll continue_from = skip_sequences.size();
     start = std::chrono::high_resolution_clock::now();
     while(!skip_sequences.empty()){
         sub_seq.erase(remove(sub_seq.begin(), sub_seq.end(), skip_sequences.back()));
         skip_sequences.pop_back();
     }
-    #pragma omp parallel for schedule(dynamic) shared(subseq_to_db,sub_seq,n,cout,fileout) private(i) default(none)
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration= duration_cast<std::chrono::seconds>(end - start);
+    cout << "sub seq calc done in " << duration.count() << " seconds" << endl;
+    skip_sequences.clear();
+    #pragma omp parallel for schedule(dynamic) shared(subseq_to_db,sub_seq,n,cout,fileout,continue_from) private(i) default(none)
     for(i = 0; i < sub_seq.size(); i++) {
         auto seq = sub_seq[i];
         string x = seq;
@@ -140,7 +145,7 @@ void ComplexityToDebruijn::compute() {
             }
             fileout << "the number of Debruijn sequences: " << num << endl << endl;
             total_seq_num += num;
-            cout << "Sequence #" << i << ": " << seq << " - " << num << endl;
+            cout << "Sequence #" << i+continue_from << ": " << seq << " - " << num << endl;
         }
     }
     fileout << "number of small sequences with complexity " << complexity - pow(2,order - 1)<< " is: " << sub_seq.size() << endl;
