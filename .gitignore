@@ -361,3 +361,25 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+*.json
+*.cmake
+*.bin
+cmake-build-release/CMakeFiles/Makefile2
+*.make
+*.ts
+*.d
+*.a
+cmake-build-debug/CMakeFiles/debruijn_sequence_complexity.dir/objects1
+cmake-build-debug/CMakeFiles/Makefile2
+*.marks
+*.cbp
+cmake-build-debug/Makefile
+*.exe
+*.c
+cmake-build-release/CMakeFiles/clion-Release-log.txt
+cmake-build-release/CMakeFiles/clion-environment.txt
+cmake-build-release/CMakeFiles/debruijn_sequence_complexity.dir/compiler_depend.internal
+cmake-build-release/CMakeFiles/cmake.check_cache
+cmake-build-release/CMakeFiles/debruijn_sequence_complexity.dir/link.txt
+cmake-build-release/CMakeFiles/debruijn_sequence_complexity.dir/objects1
+cmake-build-release/CMakeFiles/TargetDirectories.txt
