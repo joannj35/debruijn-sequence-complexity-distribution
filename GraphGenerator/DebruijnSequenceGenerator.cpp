@@ -59,7 +59,7 @@ class DebruijnSequenceGenerator
 {
 public:
 
-	enum class ComputationMethod : std::uint8_t
+	enum class ComputationMethod : uint8_t
 	{
 		Hamiltonian,
 		Euler

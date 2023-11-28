@@ -20,7 +20,7 @@ struct Command
 	std::function<void(Command*)> _execute;
 };
 
-enum class ExecutionResult : std::uint8_t
+enum class ExecutionResult : uint8_t
 {
 	SUCCESS,
 	UNRECOGNIZED_COMMAND
