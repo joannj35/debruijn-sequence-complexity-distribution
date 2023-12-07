@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <fstream>
 
 void DebruijnGraph::InitGraph()
 {
@@ -164,10 +165,11 @@ void DebruijnGraph::ComputeHamiltonianPaths(Vertex* v, std::vector<Vertex*>& ver
 
     v->flag = true;
     vertices.push_back(v);
+    std::ofstream fileout("order_"+ to_string(this->_order)+ "alphabet_" + this->_alphabet + ".txt", std::ios::app);
 
     if (vertices.size() == _vertices.size())
     {
-        sequences.emplace_back(ExtractDebruijnSequence(vertices));
+        fileout << ExtractDebruijnSequence(vertices) << std::endl;
     }
     else
     {
