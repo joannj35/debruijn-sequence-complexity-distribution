@@ -7,8 +7,6 @@ linear complexity for which there exist de Bruijn sequences of given span over f
 
 ## Research Domains
 Our study is divided into two distinct research domains:
-* [Binary Fields](###Binary-Fields)
-* [Non-Binary Fields](###Non-Binary-Fields)
   
 ### Binary Fields
 This section examines de Bruijn sequences within binary fields (fields of prime 2), focusing on sequences with spans of 6 and 7. The code is found under `binary-fields` branch where the computation of the complexities utilizes *multithreading* and *OpenMP* to efficiently handle complex calculations and data processing.
