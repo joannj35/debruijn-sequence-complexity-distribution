@@ -1,1 +1,1 @@
-# debruijn_sequence_complexity
+# DeBruijn Sequence Complexity Distribution Over Prime Fields
