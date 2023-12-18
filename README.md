@@ -1,10 +1,8 @@
 # DeBruijn Sequence Complexity Distribution Over Prime Fields
-[![License](https://img.shields.io/badge/license-Apache_2.0-green)](https://github.com/joannj35/debruijn-sequence-complexity/blob/main/LICENSE)
-[![binary](https://img.shields.io/badge/branch-binary-orange)](https://github.com/joannj35/debruijn-sequence-complexity/tree/master-omp)
-[![nonBinary](https://img.shields.io/badge/branch-non_binary-blue)](https://github.com/joannj35/debruijn-sequence-complexity/tree/non-binary)
-[![tool](https://img.shields.io/badge/GUI-DSP-8A2BE2)](https://github.com/joannj35/debruijn-sequence-complexity/blob/main/LICENSE)
-
-
+[![License](https://img.shields.io/badge/license-Apache_2.0-green)](https://github.com/joannj35/debruijn-sequence-complexity-distribution/blob/main/LICENSE)
+[![binary](https://img.shields.io/badge/branch-binary-orange)](https://github.com/joannj35/debruijn-sequence-complexity-distribution/tree/master-omp)
+[![nonBinary](https://img.shields.io/badge/branch-non_binary-blue)](https://github.com/joannj35/debruijn-sequence-complexity-distribution/tree/non-binary)
+[![tool](https://img.shields.io/badge/GUI-DSP-8A2BE2)](https://github.com/joannj35/debruijn-sequence-parser)
 
 ## Overview
 In this project we continue the study of the linear complexity of de Bruijn sequences over finite fields. Our aim is to establish the integer values of
