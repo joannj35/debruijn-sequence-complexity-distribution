@@ -18,7 +18,7 @@ This section examines de Bruijn sequences within binary fields (prime field 2), 
 This section examines de Bruijn sequences within non-binary fields (prime fields 3,5,7), particularly focusing on sequences with span 2. The code is found under `non-binary-fields` branch.
 
 ## Additional Tools and Visualization
-For a more enhanced user experience, we have developed a (humble) GUI tool, housed in a separate repository. This GUI effectively visualizes the result data, providing a more intuitive understanding of the complexity distributions. For access to the GUI and further instructions, please refer to [GUI repository]().
+For a more enhanced user experience, we have developed a (humble) GUI tool, housed in a separate repository. This GUI effectively visualizes the result data, providing a more intuitive understanding of the complexity distributions. For access to the GUI and further instructions, please refer to [GUI repository](https://github.com/joannj35/debruijn-sequence-parser).
 
 ## Using the Code
 Each branch of this repository contains specific instructions and scripts for the respective domain. Please refer to the README files within each branch for detailed usage guidelines.
