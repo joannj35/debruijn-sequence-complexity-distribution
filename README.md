@@ -27,7 +27,7 @@ Each branch of this repository contains specific instructions and scripts for th
 Contributions to this project are highly appreciated. If you have suggestions or improvements, please fork the appropriate branch of the repository, make your changes, and submit a pull request.
 
 ## Acknowledgments
-Special acknowledgment to **Tuvi Etzion**, professor of computer science at **Technion – Israel Institute of Technology**, for his invaluable advice and support throughout this project. His expertise significantly contributed to the successful completion of this work
+Special acknowledgment to [Tuvi Etzion](https://etzion.net.technion.ac.il/), professor of computer science at **Technion – Israel Institute of Technology**, for his invaluable advice and support throughout this project. His expertise significantly contributed to the successful completion of this work
 
 ## LICENSE
 This project is licensed under Apache License 2.0. For more information, see the LICENSE file in this repository.
