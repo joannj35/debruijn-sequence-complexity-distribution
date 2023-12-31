@@ -40,12 +40,14 @@ static vector<vector<int>> findSolutions(int field, int sol) {
                                     if((z - 2*w + v + (field*field)) % field == sol){
                                         if(field == 5)
                                             solutions.push_back({x, y, z, w, v});
-                                        for(int u = 0; u < field; ++u){
-                                            if((w - 2*v + u + (field*field)) % field == sol){
-                                                for (int i = 0; i < field; ++i) {
-                                                    if((v - 2*u + i + (field*field)) % field == sol)
-
-                                                        solutions.push_back({x, y, z, w, v, u, i});
+                                        else {
+                                            for (int u = 0; u < field; ++u) {
+                                                if ((w - 2 * v + u + (field * field)) % field == sol) {
+                                                    for (int i = 0; i < field; ++i) {
+                                                        if ((v - 2 * u + i + (field * field)) % field == sol)
+                                                            if (field == 7)
+                                                                solutions.push_back({x, y, z, w, v, u, i});
+                                                    }
                                                 }
                                             }
                                         }
