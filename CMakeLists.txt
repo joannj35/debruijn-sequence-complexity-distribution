@@ -15,4 +15,6 @@ add_executable(debruijn_sequence_complexity
         "Solution/main.cpp"
         "Solution/SequenceGenerator.cpp"
         "Solution/SequenceGenerator.h"
-        "Solution/ComplexityToDebruijn.h" "Solution/ComplexityToDebruijn.cpp" "Solution/PairCombinations.cpp")
+        "Solution/ComplexityToDebruijn.h" "Solution/ComplexityToDebruijn.cpp" "Solution/PairCombinations.cpp"
+        Solution/NonBinary.cpp
+        Solution/NonBinary.h)

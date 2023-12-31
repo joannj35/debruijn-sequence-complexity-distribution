@@ -6,6 +6,7 @@
 #include <fstream>
 #include <chrono>
 #include <omp.h>
+#include "NonBinary.h"
 using namespace std::chrono;
 using namespace std;
 ll total = 0;
@@ -43,52 +44,56 @@ vector<string> recovering(string filename){
 }
 
 int main(){
-    omp_set_num_threads(16);
-    cout << "Starting..." << endl;
-    /*auto start = high_resolution_clock::now();
-    SequenceGenerator se(21);
-    auto d = se.getSequences();
-    cout << se.getNumOfSeq() << endl;
-    for (int i = 0; i < d.size(); ++i) {
-        cout << d[i] << endl;
-    }
-    auto end = high_resolution_clock::now();
-    auto duration= duration_cast<seconds>(end - start);
-    cout << duration.count() << " seconds" << endl;
-    return 0;*/
+//    omp_set_num_threads(8);
+//    cout << "Starting..." << endl;
+//    /*auto start = high_resolution_clock::now();
+//    SequenceGenerator se(21);
+//    auto d = se.getSequences();
+//    cout << se.getNumOfSeq() << endl;
+//    for (int i = 0; i < d.size(); ++i) {
+//        cout << d[i] << endl;
+//    }
+//    auto end = high_resolution_clock::now();
+//    auto duration= duration_cast<seconds>(end - start);
+//    cout << duration.count() << " seconds" << endl;
+//    return 0;*/
+//
+//    int order = 7, start_complexity, end_complexity;
+//    cout << "Please provide the computation order:" << endl;
+//    cin >> order;
+//
+//    cout << "Please provide the start complexity:" << endl;
+//    cin >> start_complexity;
+//
+//    cout << "Please provide the end complexity:" << endl;
+//    cin >> end_complexity;
+//
+//    for(int c = start_complexity; c <= end_complexity; c++){
+//        cout << "for complexity " << c << endl;
+//        cout << "please choose:" << endl;
+//        cout << "1. read small sequences from file" << endl;
+//        cout << "2. generate small sequences" << endl;
+//        int choice;
+//        cin >> choice;
+//        cout << "Would you like to continue a previously paused computation? (y/n)" << endl;
+//        vector<string> recovered;
+//        string continueComputation;
+//        cin >> continueComputation;
+//        if(continueComputation == "y" || continueComputation == "Y" || continueComputation == "yes" || continueComputation == "Yes"){
+//            string continueComputation_file = "order_"+to_string(order)+"_complexity_"+to_string(c)+"_omp.txt";
+//            recovered = recovering(continueComputation_file);
+//        }
+//        bool read_file = true;
+//        int complexity = c;
+//        if (choice == 2){
+//            read_file = false;
+//        }
+//        ComplexityToDebruijn C(complexity,order,recovered,read_file, total);
+//        C.compute();
+//    }
+//    cout << "Done with all complexities!!!" << endl;
 
-    int order = 7, start_complexity, end_complexity;
-    cout << "Please provide the computation order:" << endl;
-    cin >> order;
-
-    cout << "Please provide the start complexity:" << endl;
-    cin >> start_complexity;
-
-    cout << "Please provide the end complexity:" << endl;
-    cin >> end_complexity;
-
-    for(int c = start_complexity; c <= end_complexity; c++){
-        cout << "for complexity " << c << endl;
-        cout << "please choose:" << endl;
-        cout << "1. read small sequences from file" << endl;
-        cout << "2. generate small sequences" << endl;
-        int choice;
-        cin >> choice;
-        cout << "Would you like to continue a previously paused computation? (y/n)" << endl;
-        vector<string> recovered;
-        string continueComputation;
-        cin >> continueComputation;
-        if(continueComputation == "y" || continueComputation == "Y" || continueComputation == "yes" || continueComputation == "Yes"){
-            string continueComputation_file = "order_"+to_string(order)+"_complexity_"+to_string(c)+"_omp.txt";
-            recovered = recovering(continueComputation_file);
-        }
-        bool read_file = true;
-        int complexity = c;
-        if (choice == 2){
-            read_file = false;
-        }
-        ComplexityToDebruijn C(complexity,order,recovered,read_file, total);
-        C.compute();
-    }
-    cout << "Done with all complexities!!!" << endl;
+    NonBinary nb(7,2,12);
+    nb.compute();
+    return 0;
 }
