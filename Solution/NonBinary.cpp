@@ -7,6 +7,7 @@
 #include <set>
 #include <string>
 #include <iostream>
+#include <fstream>
 #include "NonBinary.h"
 #include "math.h"
 
@@ -106,15 +107,17 @@ static void generateSequences(vector<vector<int>>& sequences, vector<int> sequen
 
 
 void NonBinary::compute() {
+    std::string fileName = "sequences_of_field_"+ to_string(field) +"_complexity_"+ to_string(complexity) +".txt";
+    std::ofstream fileout(fileName);
     for (int i = 1; i < field; ++i) {
         vector<vector<int>> solutions = findSolutions(field, i);
         vector<vector<int>> sequences;
         generateSequences(sequences, vector<int>(field * field), field, 0, solutions);
         for (auto &sol : sequences) {
             for (auto &x : sol) {
-                cout << x ;
+                fileout << x ;
             }
-            cout << endl;
+            fileout << endl;
         }
     }
 }

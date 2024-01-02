@@ -92,8 +92,21 @@ int main(){
 //        C.compute();
 //    }
 //    cout << "Done with all complexities!!!" << endl;
-
-    NonBinary nb(7,2,12);
+    auto start = std::chrono::high_resolution_clock::now();
+    NonBinary nb(7,2,15);
     nb.compute();
+    auto end = high_resolution_clock::now();
+    auto duration= duration_cast<seconds>(end - start);
+    if(duration.count() < 1) {
+        cout << "overall execution time is " << duration_cast<milliseconds>(end - start).count() << " milliseconds"
+             << endl;
+    } else if(duration.count() > 60 && duration.count() < 3600){
+        cout << "overall execution time is " << duration_cast<minutes>(end - start).count() << " minutes" << endl;
+    } else if(duration.count() >= 3600) {
+        cout << "overall execution time is " << duration_cast<hours>(end - start).count() << " hours, " << duration_cast<minutes>(end - start).count() % 60 << " minutes" << endl;
+    }
+    else {
+        cout << "overall execution time is " << duration.count() << " seconds" << endl;
+    }
     return 0;
 }
