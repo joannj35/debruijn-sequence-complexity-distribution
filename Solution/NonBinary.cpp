@@ -8,8 +8,12 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 #include "NonBinary.h"
+#include "stdlib.h"
 #include "math.h"
+
+using namespace std;
 
 NonBinary::NonBinary(int field, int order, int complexity) : field(field), order(order), complexity(complexity) {}
 
@@ -23,6 +27,55 @@ int NonBinary::getComplexity() const {
 
 int NonBinary::getField() const {
     return field;
+}
+
+static int checkComplexityNonBinary(const std::string& S, int m, int p) {
+    if (m == 0){
+        return 1;
+    }
+    bool allzeros = std::all_of(S.begin(), S.end(), [](char c) {
+        return c == '0';
+    });
+    if(allzeros){
+        return 0;
+    }
+    int c_m = pow(p,m-1);
+    string A_1;
+    string B_m = S; // of length p^m
+    // split B_m into p substrings of length p^(m-1) take the first substring as A_1
+    A_1 = B_m.substr(0, c_m);
+    string B_m_aux = B_m.substr(c_m) + B_m.substr(0, c_m); // cyclic shift of B_m (of length p^m)
+    string D_m;
+    int D_m_int = 0;
+
+    for (int i = 0; i < B_m.size(); ++i){
+        //cout << B_m_aux[i] << " " << B_m[i] << " " << (B_m_aux[i] - B_m[i] + p) % p << endl;
+        D_m_int += (B_m_aux[i] - B_m[i] + p) % p;
+        D_m += to_string((B_m_aux[i] - B_m[i] + p) % p);
+    }
+    if (D_m_int == 0){
+        return checkComplexityNonBinary(A_1, m - 1, p);
+    } else{
+        return checkComplexityNonBinary(D_m, m, p) + c_m;
+    }
+}
+
+static void make_seq(string seq, int p, int order, vector<string>& sequences){
+    if (seq.size() == pow(p, order)){
+        sequences.push_back(seq);
+        return;
+    }
+    for (int i = 0; i < p; i++){
+        seq += to_string(i);
+        make_seq(seq,p,order,sequences);
+        seq.pop_back();
+    }
+}
+
+static vector<string> generateSequences(int p, int order){
+    vector<string> sequences;
+    make_seq("", p, order, sequences);
+    return sequences;
 }
 
 static vector<vector<int>> findSolutions(int field, int sol) {
