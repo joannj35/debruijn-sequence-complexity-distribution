@@ -116,9 +116,9 @@ void ComplexityToDebruijn::compute() {
     if (!skip_sequences.empty()) {
         mode = std::ios::app;
     }
-    std::ofstream fileout("order_"+ to_string(order)+"_complexity_"+ to_string(complexity) +"_omp.txt",mode);
+    std::ofstream fileout("field_2_span_"+ to_string(order)+"_complexity_"+ to_string(complexity) +".txt",mode);
     if(skip_sequences.empty()) {
-        fileout << "For order "<< order << " complexity "<< complexity<< ":" << endl;
+        fileout << "For span "<< order << " complexity "<< complexity<< ":" << endl;
     }
     ll continue_from = skip_sequences.size();
     start = std::chrono::high_resolution_clock::now();
