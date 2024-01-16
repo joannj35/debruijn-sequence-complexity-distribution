@@ -12,9 +12,15 @@ include_directories(.)
 include_directories("Solution")
 
 add_executable(debruijn_sequence_complexity
-        "Solution/main.cpp"
+
         "Solution/SequenceGenerator.cpp"
         "Solution/SequenceGenerator.h"
         "Solution/ComplexityToDebruijn.h" "Solution/ComplexityToDebruijn.cpp" "Solution/PairCombinations.cpp"
         Solution/NonBinary.cpp
-        Solution/NonBinary.h)
+        Solution/NonBinary.h
+        GraphGenerator/DebruijnGraph.h
+        GraphGenerator/CommandLineExecutor.h
+        GraphGenerator/complexityDistribution.cpp
+        GraphGenerator/DebruijnSequenceGenerator.cpp
+        GraphGenerator/CommandLineExecutor.cpp
+        GraphGenerator/DebruijnGraph.cpp)
