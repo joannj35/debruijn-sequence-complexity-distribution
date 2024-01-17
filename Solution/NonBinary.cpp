@@ -6,12 +6,11 @@
 #include <vector>
 #include <set>
 #include <string>
-#include <iostream>
 #include <fstream>
 #include <algorithm>
 #include "NonBinary.h"
-#include "stdlib.h"
 #include "math.h"
+#include <map>
 
 using namespace std;
 
@@ -60,6 +59,7 @@ static int checkComplexityNonBinary(const std::string& S, int m, int p) {
     }
 }
 
+//generates all possible sequences of length p^order over the alphabet {0,1,...,p-1}
 static void make_seq(string seq, int p, int order, vector<string>& sequences){
     if (seq.size() == pow(p, order)){
         sequences.push_back(seq);
@@ -72,64 +72,81 @@ static void make_seq(string seq, int p, int order, vector<string>& sequences){
     }
 }
 
-static vector<string> generateSequences(int p, int order){
+static vector<string> generateSmallSequences(int p, int order, int complexity) {
     vector<string> sequences;
+    vector<string> small_sequences;
     make_seq("", p, order, sequences);
-    return sequences;
+    for (auto seq:sequences) {
+        if (checkComplexityNonBinary(seq, order, p) == complexity) {
+            small_sequences.push_back(seq);
+        }
+    }
+    return small_sequences;
 }
 
-static vector<vector<int>> findSolutions(int field, int sol) {
-    vector<vector<int>> solutions;
-    for (int x = 0; x < field; ++x) {
-        for (int y = 0; y < field; ++y) {
-            for (int z = 0; z < field; ++z) {
-                if ((x - 2*y + z + (field*field)) % field == sol){
-                    if(field == 3){
-                        solutions.push_back({x, y, z});
+static map<int,vector<string>> findSolutions(int field, string small_seq) {
+    vector<string> sequences;
+    map<int,vector<string>> solutions;
+    make_seq("",field,1,sequences);
+    for (auto seq:sequences) {
+        switch (field) {
+            case 3:
+                for (int i = 0; i < small_seq.size(); ++i) {
+                    int x = seq[0], y = seq[1], z = seq[2], sol = small_seq[i] - '0';
+                    if ((x - 2 * y + z + (field * field)) % field == sol) {
+                        solutions[sol].push_back(seq);
+                        break;
                     }
-                    if (field == 5 || field == 7){
-                        for (int w = 0; w < field; ++w) {
-                            if((y - 2*z + w + (field*field)) % field == sol){
-                                for(int v = 0; v < field; ++v){
-                                    if((z - 2*w + v + (field*field)) % field == sol){
-                                        if(field == 5)
-                                            solutions.push_back({x, y, z, w, v});
-                                        else {
-                                            for (int u = 0; u < field; ++u) {
-                                                if ((w - 2 * v + u + (field * field)) % field == sol) {
-                                                    for (int i = 0; i < field; ++i) {
-                                                        if ((v - 2 * u + i + (field * field)) % field == sol)
-                                                            if (field == 7)
-                                                                solutions.push_back({x, y, z, w, v, u, i});
-                                                    }
-                                                }
-                                            }
-                                        }
+                }
+                break;
+            case 5:
+                for (int i = 0; i < small_seq.size(); ++i) {
+                    int x = seq[0], y = seq[1], z = seq[2], w = seq[3], v = seq[4], sol = small_seq[i] - '0';
+                    if ((x - 2 * y + z + (field * field)) % field == sol) {
+                        if ((y - 2 * z + w + (field * field)) % field == sol) {
+                            if ((z - 2 * w + v + (field * field)) % field == sol) {
+                                solutions[sol].push_back(seq);
+                                break;
+                            }
+                        }
+                    }
+                }
+                break;
+            case 7:
+                for (int i = 0; i < small_seq.size(); ++i) {
+                    int x = seq[0], y = seq[1], z = seq[2], w = seq[3], v = seq[4], u = seq[5], k = seq[6], sol =
+                            small_seq[i] - '0';
+                    if ((x - 2 * y + z + (field * field)) % field == sol) {
+                        if ((y - 2 * z + w + (field * field)) % field == sol) {
+                            if ((z - 2 * w + v + (field * field)) % field == sol) {
+                                if ((w - 2 * v + u + (field * field)) % field == sol) {
+                                    if ((v - 2 * u + k + (field * field)) % field == sol) {
+                                        solutions[sol].push_back(seq);
+                                        break;
                                     }
                                 }
                             }
                         }
                     }
-
                 }
-            }
+                break;
+            default:
+                cout << "field " << field << " is not supported" << endl;
+                exit(0);
+                break;
         }
+
     }
     return solutions;
 }
 
-// Convert a pair of integers to a string
-static string pairToString(int a, int b) {
-    return std::to_string(a) + std::to_string(b);
-}
-
-static bool isDeBruijnSequence(const std::vector<int>& sequence, int p) {
+static bool isDeBruijnSequence(const string& sequence, int p) {
     if (sequence.size() != p * p) return false;
 
     std::set<std::string> substrings;
 
     for (size_t i = 0; i < sequence.size(); ++i) {
-        std::string sub = pairToString(sequence[i], sequence[(i + 1) % sequence.size()]);
+        std::string sub = to_string(sequence[i])+ to_string(sequence[(i + 1) % sequence.size()]);
         if (substrings.find(sub) != substrings.end()) {
             return false;
         }
@@ -139,39 +156,94 @@ static bool isDeBruijnSequence(const std::vector<int>& sequence, int p) {
     return substrings.size() == p * p;
 }
 
-static void generateSequences(vector<vector<int>>& sequences, vector<int> sequence, int field, int index, vector<vector<int>> &solutions) {
+///<summary>
+/// generate all possible debruijn sequences of length p^order over the alphabet {0,1,...,p-1}
+/// using the given small sequence
+///</summary>
+static void generateSequences(vector<string>& sequences, string sequence, int field, int index, map<int,vector<string>> &solutions, string small_sequence, map<string,bool> checkList) {
     if (index == field) {
-        if (isDeBruijnSequence(sequence, field)) {
-            sequences.push_back(sequence);
-        }
-
+        sequences.push_back(sequence);
         return;
     }
-    for (auto sol : solutions) {
+    for (auto sol : solutions[small_sequence[index] - '0']) { //small_sequence[index] - '0' is the solution for the small sequence
         if(index == 0 && sol[0] != 0) continue;
         if(index == 1 && sol[0] != 0) continue;
+        vector<string> reset;
         for (int i = 0; i < field; ++i) {
             sequence[index + i*field] = sol[i];
-        }
-        generateSequences(sequences, sequence, field, index + 1, solutions);
 
+            if(index > 0){
+                string sub = to_string(sequence[index + i*field - 1]) + to_string(sequence[index + i*field]);
+                if(checkList[sub]) {
+                    for (auto &r: reset) {
+                        checkList[r] = false;
+                    }
+                    continue;
+                }
+                checkList[sub] = true;
+                reset.push_back(sub);
+            }
+            if(index == field - 1){
+                string sub;
+                if(i==field-1) {
+                    sub = to_string(sequence[index + i * field]) + to_string(sequence[0]);
+                }else{//TODO check this
+                    sub = to_string(sequence[index + i*field]) + to_string(sequence[index + i*field + 1]);
+                }
+                if(checkList[sub]) {
+                    for (auto &r: reset) {
+                        checkList[r] = false;
+                    }
+                    continue;
+                }
+                checkList[sub] = true;
+                reset.push_back(sub);
+            }
+        }
+        generateSequences(sequences, sequence, field, index + 1, solutions, small_sequence, checkList);
+        for (auto &r: reset) {
+            checkList[r] = false;
+        }
     }
 }
 
-
-void NonBinary::compute() {
-    std::string fileName = "sequences_of_field_"+ to_string(field) +"_complexity_"+ to_string(complexity) +".txt";
-    std::ofstream fileout(fileName);
-    for (int i = 1; i < field; ++i) {
-        vector<vector<int>> solutions = findSolutions(field, i);
-        vector<vector<int>> sequences;
-        generateSequences(sequences, vector<int>(field * field), field, 0, solutions);
-        for (auto &sol : sequences) {
-            for (auto &x : sol) {
-                fileout << x ;
-            }
-            fileout << endl;
+/// <summary>
+/// generate a map of all possible sequences of length=order over the alphabet {0,1,...,field-1}
+/// the value of each sequence is false by default
+/// this map will be used to check if a sequence is debruijn or not
+/// </summary>
+static map<string,bool> debriujnCheckList(int field){
+    map<string,bool> checkList;
+    for(int i = 0; i<field ; i++){
+        for(int j = 0; j<field ; j++){
+            string seq = to_string(i) + to_string(j);
+            checkList[seq] = false;
         }
     }
+    return checkList;
+}
+
+void NonBinary::compute() {
+    std::ofstream fileout("field_"+ to_string(field)+"_span_"+ to_string(order) +"_complexity_"+ to_string(complexity) +".txt");
+    auto small_sequences = generateSmallSequences(field, order-1, complexity-2*field); // 2*field is Hardcoded for now
+    fileout << "For order " << order << " complexity " << complexity << " : " << endl;
+    long long total = 0;
+    for (auto &small_sequence : small_sequences) {
+        map<int,vector<string>> solutions = findSolutions(field, small_sequence);
+        auto checkList = debriujnCheckList(field);
+        vector<string> sequences;
+        generateSequences(sequences, "", field, 0, solutions, small_sequence, checkList);
+        fileout << "Debruijn Sequences generated by the sequence " << small_sequence << " : " << endl;
+        total += sequences.size();
+        int limit = 0;
+        for (auto &sol : sequences) {
+            if (limit > 1000) break;
+            fileout << sol << endl;
+            limit++;
+        }
+        fileout << "the number of Debruijn sequences: " << sequences.size() << endl;
+    }
+    fileout << "total number of sequences of small complexity " << complexity - 2*field << " is: " << small_sequences.size() << endl;
+    fileout << "total number of debruijn sequences of complexity " << complexity << " is: " << total << endl;
 }
 

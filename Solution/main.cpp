@@ -93,7 +93,7 @@ int main(){
 //    }
 //    cout << "Done with all complexities!!!" << endl;
     auto start = std::chrono::high_resolution_clock::now();
-    NonBinary nb(7,2,15);
+    NonBinary nb(3,2,7);
     nb.compute();
     auto end = high_resolution_clock::now();
     auto duration= duration_cast<seconds>(end - start);
