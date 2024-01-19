@@ -12,10 +12,13 @@ linear complexity for which there exist de Bruijn sequences of given span over f
 Our study is divided into two distinct research domains:
   
 ### Binary Fields
-This section examines de Bruijn sequences within binary fields (prime field 2), focusing on sequences with spans of 6 and 7. The code is found under `binary-field` branch where the computation of the complexities utilizes ***multithreading*** and ***OpenMP*** to efficiently handle complex calculations and data processing.
+This section examines de Bruijn sequences within binary fields (prime field 2), focusing on sequences with spans of 6 and 7. The computation of the complexities utilizes ***multithreading*** and ***OpenMP*** to efficiently handle complex calculations and data processing.
+
+***NOTE***:
+Complexity 71 of span 7 is calculated in a different approach under the branch [Binary_Span7_71](https://github.com/joannj35/debruijn-sequence-complexity-distribution/tree/Binary_Span7_71)
 
 ### Non-Binary Fields
-This section examines de Bruijn sequences within non-binary fields (prime fields 3,5,7), particularly focusing on sequences with span 2. The code is found under `non-binary-fields` branch.
+This section examines de Bruijn sequences within non-binary fields (prime fields 3,5,7), particularly focusing on sequences with span 2.
 
 ## Additional Tools and Visualization
 For a more enhanced user experience, we have developed a (humble) GUI tool, housed in a separate repository. This GUI effectively visualizes the result data, providing a more intuitive understanding of the complexity distributions. For access to the GUI and further instructions, please refer to [GUI repository](https://github.com/joannj35/debruijn-sequence-parser).
