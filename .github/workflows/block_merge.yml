@@ -1,7 +1,7 @@
 # Binary_Span7_71 takes a different approach to calculate the sequences.
 # thus must be prevented fro being merged to master
 
-name: Block Merge from Binary_Span7_71 to Master
+name: Block Merge from 71
 
 on:
   pull_request:
