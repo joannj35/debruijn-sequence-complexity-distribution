@@ -1,5 +1,5 @@
 # DeBruijn Sequence Complexity Distribution Over Prime Fields
-[![License](https://img.shields.io/badge/license-Apache_2.0-green)](https://github.com/joannj35/debruijn-sequence-complexity-distribution/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/license-Apache_2.0-green)](https://github.com/joannj35/debruijn-sequence-complexity-distribution/blob/master/LICENSE)
 [![complexity71](https://img.shields.io/badge/complexity_71-branch-orange)](https://github.com/joannj35/debruijn-sequence-complexity-distribution/tree/Binary_Span7_71)
 [![tool](https://img.shields.io/badge/GUI-DSP-8A2BE2)](https://github.com/joannj35/debruijn-sequence-parser)
 
