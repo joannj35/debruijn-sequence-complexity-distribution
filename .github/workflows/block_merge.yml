@@ -1,0 +1,20 @@
+# Binary_Span7_71 takes a different approach to calculate the sequences.
+# thus must be prevented fro being merged to master
+
+name: Block Merge from Binary_Span7_71 to Master
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  check-branch:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Block merge
+      run: |
+        if [[ ${{ github.head_ref }} == "Binary_Span7_71" ]]; then
+          echo "Merging from Binary_Span7_71 to master is not allowed."
+          exit 1
+        fi
