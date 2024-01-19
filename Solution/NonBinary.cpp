@@ -235,7 +235,7 @@ static map<string,bool> debriujnCheckList(int field){
 void NonBinary::compute() {
     std::ofstream fileout("field_"+ to_string(field)+"_span_"+ to_string(order) +"_complexity_"+ to_string(complexity) +".txt");
     auto small_sequences = generateSmallSequences(field, order-1, complexity-2*field); // 2*field is Hardcoded for now
-    fileout << "For order " << order << " complexity " << complexity << " : " << endl;
+    fileout << "For order " << order << " complexity " << complexity << " : " << endl << endl;
     long long total = 0;
     for (auto &small_sequence : small_sequences) {
         map<int,vector<string>> solutions = findSolutions(field, small_sequence);
@@ -250,7 +250,7 @@ void NonBinary::compute() {
             fileout << sol << endl;
             limit++;
         }
-        fileout << "the number of Debruijn sequences: " << sequences.size() << endl;
+        fileout << "the number of Debruijn sequences: " << sequences.size() << endl << endl;
     }
     fileout << "total number of sequences of small complexity " << complexity - 2*field << " is: " << small_sequences.size() << endl;
     fileout << "total number of debruijn sequences of complexity " << complexity << " is: " << total << endl;
