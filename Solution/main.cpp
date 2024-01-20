@@ -44,69 +44,92 @@ vector<string> recovering(string filename){
 }
 
 int main(){
-//    omp_set_num_threads(8);
-//    cout << "Starting..." << endl;
-//    /*auto start = high_resolution_clock::now();
-//    SequenceGenerator se(21);
-//    auto d = se.getSequences();
-//    cout << se.getNumOfSeq() << endl;
-//    for (int i = 0; i < d.size(); ++i) {
-//        cout << d[i] << endl;
-//    }
-//    auto end = high_resolution_clock::now();
-//    auto duration= duration_cast<seconds>(end - start);
-//    cout << duration.count() << " seconds" << endl;
-//    return 0;*/
-//
-//    int order = 7, start_complexity, end_complexity;
-//    cout << "Please provide the computation order:" << endl;
-//    cin >> order;
-//
-//    cout << "Please provide the start complexity:" << endl;
-//    cin >> start_complexity;
-//
-//    cout << "Please provide the end complexity:" << endl;
-//    cin >> end_complexity;
-//
-//    for(int c = start_complexity; c <= end_complexity; c++){
-//        cout << "for complexity " << c << endl;
-//        cout << "please choose:" << endl;
-//        cout << "1. read small sequences from file" << endl;
-//        cout << "2. generate small sequences" << endl;
-//        int choice;
-//        cin >> choice;
-//        cout << "Would you like to continue a previously paused computation? (y/n)" << endl;
-//        vector<string> recovered;
-//        string continueComputation;
-//        cin >> continueComputation;
-//        if(continueComputation == "y" || continueComputation == "Y" || continueComputation == "yes" || continueComputation == "Yes"){
-//            string continueComputation_file = "order_"+to_string(order)+"_complexity_"+to_string(c)+"_omp.txt";
-//            recovered = recovering(continueComputation_file);
-//        }
-//        bool read_file = true;
-//        int complexity = c;
-//        if (choice == 2){
-//            read_file = false;
-//        }
-//        ComplexityToDebruijn C(complexity,order,recovered,read_file, total);
-//        C.compute();
-//    }
-//    cout << "Done with all complexities!!!" << endl;
-    auto start = std::chrono::high_resolution_clock::now();
-    NonBinary nb(3,2,7);
-    nb.compute();
+    omp_set_num_threads(8);
+    cout << "Starting..." << endl;
+    /*auto start = high_resolution_clock::now();
+    SequenceGenerator se(21);
+    auto d = se.getSequences();
+    cout << se.getNumOfSeq() << endl;
+    for (int i = 0; i < d.size(); ++i) {
+        cout << d[i] << endl;
+    }
     auto end = high_resolution_clock::now();
     auto duration= duration_cast<seconds>(end - start);
-    if(duration.count() < 1) {
-        cout << "overall execution time is " << duration_cast<milliseconds>(end - start).count() << " milliseconds"
-             << endl;
-    } else if(duration.count() > 60 && duration.count() < 3600){
-        cout << "overall execution time is " << duration_cast<minutes>(end - start).count() << " minutes" << endl;
-    } else if(duration.count() >= 3600) {
-        cout << "overall execution time is " << duration_cast<hours>(end - start).count() << " hours, " << duration_cast<minutes>(end - start).count() % 60 << " minutes" << endl;
+    cout << duration.count() << " seconds" << endl;
+    return 0;*/
+
+    int order = 7, start_complexity, end_complexity, field;
+    cout << "Please provide the field (2, 3, 5, 7):" << endl;
+    cin >> field;
+    while (field != 2 && field != 3 && field != 5 && field != 7){
+        cout << "The provided field is not supported please choose 2, 3, 5 or 7:" << endl;
+        cin >> field;
     }
-    else {
-        cout << "overall execution time is " << duration.count() << " seconds" << endl;
+    if(field == 2){
+        //this should work with any provided order but the main 2 orders we worked with are 6,7
+        cout << "Please provide the computation order:" << endl;
+        cin >> order;
+    } else {
+        //the code only supports order 2 for fields 3,5,7
+        order = 2;
     }
+
+    cout << "Please provide the start complexity:" << endl;
+    cin >> start_complexity;
+
+    cout << "Please provide the end complexity:" << endl;
+    cin >> end_complexity;
+
+    for(int c = start_complexity; c <= end_complexity; c++) {
+        if (field == 2) {
+            cout << "for complexity " << c << endl;
+            cout << "please choose:" << endl;
+            cout << "1. read small sequences from file" << endl;
+            cout << "2. generate small sequences" << endl;
+            int choice;
+            cin >> choice;
+            cout << "Would you like to continue a previously paused computation? (y/n)" << endl;
+            vector<string> recovered;
+            string continueComputation;
+            cin >> continueComputation;
+            if (continueComputation == "y" || continueComputation == "Y" || continueComputation == "yes" ||
+                continueComputation == "Yes") {
+                string continueComputation_file =
+                        "order_" + to_string(order) + "_complexity_" + to_string(c) + "_omp.txt";
+                recovered = recovering(continueComputation_file);
+            }
+            bool read_file = true;
+            int complexity = c;
+            if (choice == 2) {
+                read_file = false;
+            }
+            ComplexityToDebruijn C(complexity, order, recovered, read_file, total);
+            C.compute();
+        } else {
+            if ((c < (2 * field + 1)) || (c > 3 * field)) {
+                cout << "Complexity " << c << " is not supported" << endl;
+                continue;
+            }
+            auto start = std::chrono::high_resolution_clock::now();
+            cout << "starting complexity " << c << endl;
+            NonBinary nb(field,order,c);
+            nb.compute();
+            auto end = high_resolution_clock::now();
+            auto duration= duration_cast<seconds>(end - start);
+            if(duration.count() < 1) {
+                cout << "overall execution time is " << duration_cast<milliseconds>(end - start).count() << " milliseconds"
+                     << endl;
+            } else if(duration.count() > 60 && duration.count() < 3600){
+                cout << "overall execution time is " << duration_cast<minutes>(end - start).count() << " minutes" << endl;
+            } else if(duration.count() >= 3600) {
+                cout << "overall execution time is " << duration_cast<hours>(end - start).count() << " hours, " << duration_cast<minutes>(end - start).count() % 60 << " minutes" << endl;
+            }
+            else {
+                cout << "overall execution time is " << duration.count() << " seconds" << endl;
+            }
+        }
+    }
+    cout << "Done with all complexities!!!" << endl;
+
     return 0;
 }
