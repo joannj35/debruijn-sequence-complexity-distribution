@@ -106,10 +106,10 @@ int main(){
             ComplexityToDebruijn C(complexity, order, recovered, read_file, total);
             C.compute();
         } else {
-            if ((c < (2 * field + 1)) || (c > 3 * field)) {
-                cout << "Complexity " << c << " is not supported" << endl;
-                continue;
-            }
+//            if ((c < (2 * field + 1)) || (c > 3 * field)) {
+//                cout << "Complexity " << c << " is not supported" << endl;
+//                continue;
+//            }
             auto start = std::chrono::high_resolution_clock::now();
             cout << "starting complexity " << c << endl;
             NonBinary nb(field,order,c);
