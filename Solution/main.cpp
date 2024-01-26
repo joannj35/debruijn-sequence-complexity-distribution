@@ -44,7 +44,10 @@ vector<string> recovering(string filename){
 }
 
 int main(){
-    omp_set_num_threads(8);
+    int numThreads;
+    cout << "Please provide the number of threads you would like to utilize" << endl;
+    cin >> numThreads;
+    omp_set_num_threads(numThreads);
     cout << "Starting..." << endl;
     /*auto start = high_resolution_clock::now();
     SequenceGenerator se(21);
