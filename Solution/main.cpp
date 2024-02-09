@@ -48,19 +48,6 @@ int main(){
     cout << "Please provide the number of threads you would like to utilize" << endl;
     cin >> numThreads;
     omp_set_num_threads(numThreads);
-    cout << "Starting..." << endl;
-    /*auto start = high_resolution_clock::now();
-    SequenceGenerator se(21);
-    auto d = se.getSequences();
-    cout << se.getNumOfSeq() << endl;
-    for (int i = 0; i < d.size(); ++i) {
-        cout << d[i] << endl;
-    }
-    auto end = high_resolution_clock::now();
-    auto duration= duration_cast<seconds>(end - start);
-    cout << duration.count() << " seconds" << endl;
-    return 0;*/
-
     int order = 7, start_complexity, end_complexity, field;
     cout << "Please provide the field (2, 3, 5, 7):" << endl;
     cin >> field;
@@ -85,6 +72,7 @@ int main(){
 
     for(int c = start_complexity; c <= end_complexity; c++) {
         if (field == 2) {
+            /*Binary*/
             cout << "for complexity " << c << endl;
             cout << "please choose:" << endl;
             cout << "1. read small sequences from file" << endl;
@@ -98,7 +86,7 @@ int main(){
             if (continueComputation == "y" || continueComputation == "Y" || continueComputation == "yes" ||
                 continueComputation == "Yes") {
                 string continueComputation_file =
-                        "order_" + to_string(order) + "_complexity_" + to_string(c) + "_omp.txt";
+                        "field_" + to_string(field) + "_span_" + to_string(order) + "_complexity_" + to_string(c) + ".txt";
                 recovered = recovering(continueComputation_file);
             }
             bool read_file = true;
@@ -106,15 +94,17 @@ int main(){
             if (choice == 2) {
                 read_file = false;
             }
+            cout << "Starting computation for complexity " << c << " over field of size " << to_string(field) << endl;
             ComplexityToDebruijn C(complexity, order, recovered, read_file, total);
             C.compute();
         } else {
-//            if ((c < (2 * field + 1)) || (c > 3 * field)) {
-//                cout << "Complexity " << c << " is not supported" << endl;
-//                continue;
-//            }
+            /* NonBinary */
+            if ((c < (2 * field + 1)) || (c >= pow(field, order))) {
+                cout << "Complexity " << c << " is not supported" << endl;
+                continue;
+            }
             auto start = std::chrono::high_resolution_clock::now();
-            cout << "starting complexity " << c << endl;
+            cout << "Starting computation for complexity " << c << " over field of size " << to_string(field) << endl;
             NonBinary nb(field,order,c);
             nb.compute();
             auto end = high_resolution_clock::now();
