@@ -23,7 +23,10 @@ This section examines de Bruijn sequences within non-binary fields (prime fields
 For a more enhanced user experience, we have developed a (humble) GUI tool, housed in a separate repository. This GUI effectively visualizes the result data, providing a more intuitive understanding of the complexity distributions. For access to the GUI and further instructions, please refer to [GUI repository](https://github.com/joannj35/debruijn-sequence-parser).
 
 ## Using the Code
-Each branch of this repository contains specific instructions and scripts for the respective domain. Please refer to the README files within each branch for detailed usage guidelines.
+Each branch of this repository contains specific instructions and scripts for the respective domain. To simplify running the code, we have introduced a Command Line Interface (CLI) which prompts the user for necessary inputs, streamlining the execution process. 
+
+### Binary Field Domain Feature
+In the binary field domain ***ONLY***, users have the exclusive capability to pause and unpause complexity calculation at command. If the code is paused and later unpaused, it will resume from the exact point where it was halted, thereby conserving valuable computation time and resources.
 
 ## Contributing
 Contributions to this project are highly appreciated. If you have suggestions or improvements, please fork the appropriate branch of the repository, make your changes, and submit a pull request.
