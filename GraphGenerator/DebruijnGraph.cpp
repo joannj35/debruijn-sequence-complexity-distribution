@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <fstream>
 
 void DebruijnGraph::InitGraph()
 {
@@ -157,6 +158,37 @@ void DebruijnGraph::HamiltonianPaths(Vertex* v, std::vector<std::string>& sequen
     ComputeHamiltonianPaths(v, vertices, sequences, limit);
 }
 
+static int checkComplexityNonBinary(const std::string& S, int m, int p) {
+    if (m == 0){
+        return 1;
+    }
+    bool allzeros = std::all_of(S.begin(), S.end(), [](char c) {
+        return c == '0';
+    });
+    if(allzeros){
+        return 0;
+    }
+    int c_m = pow(p,m-1);
+    string A_1;
+    string B_m = S; // of length p^m
+    // split B_m into p substrings of length p^(m-1) take the first substring as A_1
+    A_1 = B_m.substr(0, c_m);
+    string B_m_aux = B_m.substr(c_m) + B_m.substr(0, c_m); // cyclic shift of B_m (of length p^m)
+    string D_m;
+    int D_m_int = 0;
+
+    for (int i = 0; i < B_m.size(); ++i){
+        //cout << B_m_aux[i] << " " << B_m[i] << " " << (B_m_aux[i] - B_m[i] + p) % p << endl;
+        D_m_int += (B_m_aux[i] - B_m[i] + p) % p;
+        D_m += to_string((B_m_aux[i] - B_m[i] + p) % p);
+    }
+    if (D_m_int == 0){
+        return checkComplexityNonBinary(A_1, m - 1, p);
+    } else{
+        return checkComplexityNonBinary(D_m, m, p) + c_m;
+    }
+}
+
 void DebruijnGraph::ComputeHamiltonianPaths(Vertex* v, std::vector<Vertex*>& vertices, std::vector<std::string>& sequences, int limit)
 {
     if (limit > 0 && sequences.size() == limit)
@@ -168,6 +200,12 @@ void DebruijnGraph::ComputeHamiltonianPaths(Vertex* v, std::vector<Vertex*>& ver
     if (vertices.size() == _vertices.size())
     {
         sequences.emplace_back(ExtractDebruijnSequence(vertices));
+        int complexity = checkComplexityNonBinary(sequences.back(), _order, _alphabet.size());
+        std::ofstream fileout("field"+ to_string(_alphabet.size())+"_span"+ to_string(_order) +"_complexity_"+ to_string(complexity) +".txt",std::ios::app);
+        fileout << sequences.back() << endl;
+        if (sequences.size() % 10000 == 0){
+            cout << sequences.size() << endl;
+        }
     }
     else
     {
