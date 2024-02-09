@@ -1,0 +1,3 @@
+- `ComplexityToDebruijn` files compute the debruijn sequences over ***binary*** fields
+- `NonBinary` files compute the debruijn sequences over ***non-binary*** fields
+- `SequenceGenerator` files compute the sequences of small complexity for binary fields. The corresponding code for the nonbinary case is already included in `NonBinary` files.
