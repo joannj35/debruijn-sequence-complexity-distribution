@@ -25,6 +25,7 @@ For a more enhanced user experience, we have developed a (humble) GUI tool, hous
 
 ## Citation
 If you use this software or the [data it produces](https://github.com/joannj35/debruijn-sequence-parser/tree/master/data) in your work,  please cite it using the following reference:
+
 Etzion, T., Jozen, J., & Dally, R. (2024). debruijn-sequence-complexity-distribution (Version 1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.10685239
 
 ## Using the Code
