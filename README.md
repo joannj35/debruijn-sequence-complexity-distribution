@@ -1,4 +1,4 @@
-# DeBruijn Sequence Complexity Distribution Over Prime Fields
+# Complexity Distribution of de Bruijn Sequence Over Prime Fields
 [![DOI](https://zenodo.org/badge/653524698.svg)](https://zenodo.org/doi/10.5281/zenodo.10685234)
 [![License](https://img.shields.io/badge/license-Apache_2.0-green)](https://github.com/joannj35/debruijn-sequence-complexity-distribution/blob/master/LICENSE)
 [![complexity71](https://img.shields.io/badge/complexity_71-branch-orange)](https://github.com/joannj35/debruijn-sequence-complexity-distribution/tree/Binary_Span7_71)
@@ -35,7 +35,7 @@ Each branch of this repository contains specific instructions and scripts for th
 In the binary field domain ***ONLY***, users have the exclusive capability to pause and unpause complexity calculation at command. If the code is paused and later unpaused, it will resume from the exact point where it was halted, thereby conserving valuable computation time and resources.
 
 ## Contributing
-Contributions to this project are highly appreciated. If you have suggestions or improvements, please fork the appropriate branch of the repository, make your changes, and submit a pull request.
+Contributions to this project are highly appreciated. If you have suggestions or improvements, please review the [LICENSE file](https://github.com/joannj35/debruijn-sequence-complexity-distribution/blob/master/LICENSE) , then fork the appropriate branch of the repository, make your changes, and submit a pull request.
 
 ## Acknowledgments
 Special acknowledgment to [Tuvi Etzion](https://etzion.net.technion.ac.il/), professor of computer science at **Technion – Israel Institute of Technology**, for his invaluable advice and support throughout this project. His expertise significantly contributed to the successful completion of this work
@@ -43,8 +43,3 @@ Special acknowledgment to [Tuvi Etzion](https://etzion.net.technion.ac.il/), pro
 ## LICENSE
 This project is licensed under Apache License 2.0. For more information, see the LICENSE file in this repository.
 
-## Contact
-name       |                   email                      |    github
------------|----------------------------------------------|----------------------------------------
-Joan Jozen | [joan.jozen@gmail.com](mailto:joan.jozen@gmail.com) | [joannj35](https://github.com/joannj35)
-Razan Dally| [razandally@gmail.com](mailto:razandally@gmail.com) | [RazanDally](https://github.com/RazanDally)
